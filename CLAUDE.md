@@ -4,70 +4,68 @@ Guidance for working on this repository.
 
 ## Project
 
-Horizon Wealth Planning: a one-page marketing website for a fictional financial planning firm. The entire site lives in a single file, `index.html`.
+Horizon Wealth Planning: a one-page marketing website for a fictional financial planning firm, styled as a warm, "cute and cozy" brand for people who find finance intimidating. The entire site lives in a single file, `index.html`.
 
 ## Hard constraints
 
-- Single file: `index.html`, with CSS in one `<style>` tag and JS in one `<script>` tag.
+- Single file: `index.html`, with CSS in one `<style>` block and JS in one `<script>` block.
 - Only HTML, CSS and vanilla JavaScript. No frameworks, libraries, bundlers or build tools.
-- The only external resource is the Google Fonts stylesheet (Playfair Display, Inter).
-- No build, lint or test commands exist. To run the site, open `index.html` in a browser.
+- External resources: the Google Fonts stylesheet only (Fredoka for headings, Nunito for body).
+- No build, lint or test commands. To run the site, open `index.html` in a browser.
+- **CSP hashes:** the Content Security Policy meta tag allows the inline style and script only by SHA-256 hash. After ANY edit to the CSS or JS, re-run the re-hash snippet in `SECURITY.md`, or the browser will block them.
+- Never add inline `style="..."` attributes, inline `on...=` handlers, `javascript:` URLs, or `innerHTML` with user data. Write user text with `textContent` only.
 
 ## Design system
 
-Colors are CSS custom properties on `:root`. Use the variables, never raw hex values, in new rules.
+Colors are CSS custom properties on `:root`. Use the variables, not raw hex values, in new rules.
 
 | Variable | Value | Use |
 |---|---|---|
-| `--navy` | `#0B2545` | Primary: headers, hero, buttons, headings |
-| `--navy-deep` / `--navy-soft` | `#081a31` / `#13315c` | Gradient and hover variants |
-| `--gold` | `#C9A227` | Accent: CTAs, eyebrows, highlights |
-| `--gold-soft` | `#e6d18a` | Soft accent: borders, step badges |
-| `--bg` | `#F7F9FC` | Page background |
+| `--cream` | `#FFFDF9` | Page background |
+| `--mint` / `--mint-mid` | `#E2F5ED` / `#BFE8D5` | Bands, cards, soft fills |
+| `--mint-deep` | `#2A7458` | Primary action color (white text) |
+| `--butter` / `--butter-deep` | `#FFF1B8` / `#F6D860` | Pastel yellow accents, primary buttons |
+| `--peach` | `#FFE3D6` | Third card tint |
+| `--ink` / `--ink-soft` | `#3B3835` / `#6A645E` | Warm charcoal text and borders (never pure black) |
 
-Fonts: `--serif` (Playfair Display) for headings, `--sans` (Inter) for body text.
+Style rules: pill-shaped buttons, 24px card radius (`--r`), 3px charcoal outlines with a hard offset shadow (`--pop`). Copy is friendly and uses everyday analogies instead of finance jargon.
 
 ## Responsive approach
 
-Mobile-first. Base styles target phones; enhancements are added with `min-width` media queries at two breakpoints only:
-
-- `768px` (tablet): two-column grids, side-by-side form rows, row-direction hero buttons.
-- `1024px` (desktop): the hamburger menu becomes a horizontal nav, three-column service grid, two-column hero, about and contact layouts.
-
-Do not add other breakpoints without a good reason.
+Mobile-first with two `min-width` breakpoints only: `768px` (tablet) and `1024px` (desktop, horizontal nav). Do not add others without good reason.
 
 ## Page structure (in order)
 
-1. Header with sticky nav and hamburger toggle
-2. `#top`: hero
-3. `#services`: six service cards
-4. `#approach`: four-step process (CSS counter numbering)
-5. `#planner`: growth projection calculator
-6. `#about`: firm values and highlights
-7. `#faq`: native `<details>` accordion
-8. `#contact`: contact form
+1. Sticky header and nav (CTA: "Claim My Free Money Chat")
+2. `#top`: hero with piggy bank illustration
+3. `#services`: six cozy-analogy cards (Retirement, Investment, Tax, Risk, Estate, Family)
+4. `#approach`: four steps (Discover, Design, Implement, Review)
+5. `#meter`: the Wealth-O-Meter (piggy bank calculator)
+6. `#about`: promises and highlights
+7. `#faq`: native `<details>`
+8. `#quiz`: six-question Financial Fit Quiz (replaces the contact form)
 9. Footer with legal disclaimer
-
-SVG icons are defined once in a hidden `<svg>` sprite at the top of `<body>` and referenced with `<use href="#i-name">`.
 
 ## JavaScript (single IIFE at end of body)
 
-- Mobile nav toggle (keeps `aria-expanded` in sync, closes on link click, Escape, or resize to desktop)
-- Active nav link highlighting on scroll
-- Back-to-top button
-- Scroll-reveal via `IntersectionObserver` on `.reveal` elements. The `no-js` class on `<body>` is removed by JS so content stays visible without scripting.
-- Growth planner: future value with monthly compounding, `FV = P(1+r)^n + PMT·((1+r)^n − 1)/r`, with `r = annual/12` and `n = years × 12`. A 0% rate is handled separately.
-- Contact form validation. **The form does not send data anywhere.** The submit handler only shows a confirmation message. Wire a real endpoint in the marked comment in the submit handler.
+- Nav toggle, active-link highlighting, back-to-top, scroll reveal
+- Wealth-O-Meter: `FV = P(1+r)^n + PMT·((1+r)^n − 1)/r`, `r = annual/12`, `n = years × 12`; 0% handled separately
+- Quiz: one question at a time (topic, stage, name, email, optional phone, optional note), with allowlist validation, honeypots, minimum-fill-time check and a browser-level rate limit
+- `CONFIG.endpoint` is empty, so the quiz runs in **demo mode and sends nothing**. See `SECURITY.md` before wiring a real endpoint.
 
 ## Content notes
 
-- Contact details (phone, email, address) and the highlight figures in the About section are placeholders.
-- There are deliberately no client testimonials. Only add real ones with the client's permission.
-- Projections and illustrations must stay labelled as hypothetical. Keep the financial disclaimers in the footer and next to the planner. Do not add return guarantees, performance claims or regulatory-status claims without confirmation from the firm.
+- Phone, email, address and the highlight figures in the About section are placeholders.
+- No client testimonials on purpose. Only add real ones with permission.
+- Keep projections labelled as hypothetical and keep the footer disclaimers. Do not add return guarantees, performance claims or regulatory-status claims without confirmation from the firm.
 
 ## Accessibility conventions to preserve
 
-- Skip link to `#main`, visible `:focus-visible` outlines, semantic landmarks
-- `aria-expanded` and `aria-controls` on the nav toggle; `aria-live` on planner results and form status
-- Form errors marked with `aria-invalid`
+- Skip link, visible `:focus-visible` outlines, semantic landmarks
+- `aria-expanded`/`aria-controls` on the nav toggle; `aria-live` on meter results and quiz result; `role="progressbar"` on the quiz progress
 - `prefers-reduced-motion` disables transitions and animation
+
+## Tooling
+
+- `.mcp.json` registers the Playwright MCP server (`npx -y @playwright/mcp@latest`) at project level. Browser binaries may need `npx playwright install chromium` on first use.
+- `.github/workflows/deploy.yml` publishes `index.html` to GitHub Pages on push to `main`. Pages must be set to the "GitHub Actions" source.

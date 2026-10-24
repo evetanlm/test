@@ -3,293 +3,243 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Horizon Wealth Planning | Independent Financial Planning</title>
-<meta name="description" content="Horizon Wealth Planning offers independent, fiduciary financial planning for retirement, investments, tax strategy and legacy planning.">
+<!--
+  Content Security Policy (meta version).
+  - The inline style and script blocks are allowed ONLY by SHA-256 hash, so injected inline code will not run.
+    If you edit the CSS or JS, re-run the hash step described in SECURITY.md.
+  - connect-src is 'none' until you configure a form endpoint (add its origin there).
+  - frame-ancestors, report-uri and X-Frame-Options are NOT supported in meta tags; set them as real HTTP headers on your host.
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-9KK7Ov6gaWKehZQLROWpxk4Gc/0MDHG2i1dNf/S7pNY='; style-src 'sha256-D/97/FQyKeh8jecE7k+Tdl9MyjQ5VeRySuBisX5+azw=' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; manifest-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
+<title>Horizon Wealth Planning | Money stuff, minus the scary</title>
+<meta name="description" content="Friendly, independent financial planning for people who find money talk intimidating. Take the 1-minute Financial Fit Quiz and meet your financial sidekick.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0B2545;
-    --navy-deep: #081a31;
-    --navy-soft: #13315c;
-    --gold: #C9A227;
-    --gold-soft: #e6d18a;
-    --bg: #F7F9FC;
+    --cream: #FFFDF9;
+    --mint: #E2F5ED;
+    --mint-mid: #BFE8D5;
+    --mint-deep: #2A7458;
+    --butter: #FFF1B8;
+    --butter-deep: #F6D860;
+    --peach: #FFE3D6;
+    --ink: #3B3835;
+    --ink-soft: #6A645E;
     --white: #ffffff;
-    --text: #1d2a3a;
-    --muted: #5b6b80;
-    --line: #dde4ee;
-    --radius: 12px;
-    --shadow: 0 10px 30px rgba(11, 37, 69, 0.08);
-    --serif: "Playfair Display", Georgia, serif;
-    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --error: #B3402F;
+    --r: 24px;
+    --pop: 4px 4px 0 var(--ink);
+    --head: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+    --body: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
 
   *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
   body {
-    margin: 0;
-    font-family: var(--sans);
-    font-size: 1rem;
-    line-height: 1.65;
-    color: var(--text);
-    background: var(--bg);
-    -webkit-font-smoothing: antialiased;
+    margin: 0; font-family: var(--body); font-size: 1.05rem; line-height: 1.65;
+    color: var(--ink); background: var(--cream); -webkit-font-smoothing: antialiased;
   }
-  img, svg { max-width: 100%; display: block; }
+  svg { display: block; max-width: 100%; }
   a { color: inherit; }
-  h1, h2, h3 { font-family: var(--serif); color: var(--navy); line-height: 1.2; margin: 0 0 .5em; }
+  h1, h2, h3 { font-family: var(--head); font-weight: 600; color: var(--ink); line-height: 1.15; margin: 0 0 .5em; }
   p { margin: 0 0 1em; }
-
-  :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+  :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 8px; }
 
   .container { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 1.25rem; }
-  .skip-link {
-    position: absolute; left: -999px; top: 0; background: var(--gold); color: var(--navy);
-    padding: .75rem 1rem; z-index: 200; font-weight: 600;
-  }
-  .skip-link:focus { left: 0; }
+  .skip-link { position: absolute; left: -999px; top: 0; background: var(--butter); color: var(--ink); padding: .75rem 1rem; z-index: 300; font-weight: 700; border: 3px solid var(--ink); }
+  .skip-link:focus { left: .5rem; top: .5rem; }
+  .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 
   .eyebrow {
-    display: inline-block; font-size: .78rem; font-weight: 600; letter-spacing: .14em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: .75rem;
+    display: inline-block; font-weight: 700; font-size: .85rem; letter-spacing: .04em;
+    background: var(--butter); border: 2.5px solid var(--ink); border-radius: 999px; padding: .2rem .85rem; margin-bottom: 1rem;
   }
   .section { padding: 4rem 0; }
   .section-head { max-width: 640px; margin-bottom: 2.5rem; }
-  .section-head h2 { font-size: 1.9rem; }
-  .section-head p { color: var(--muted); }
+  .section-head h2 { font-size: 2rem; }
+  .section-head p { color: var(--ink-soft); }
 
   /* Buttons */
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
-    font: 600 .95rem var(--sans); text-decoration: none; cursor: pointer;
-    padding: .85rem 1.5rem; border-radius: 999px; border: 2px solid transparent;
-    transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+    font: 700 1rem var(--body); text-decoration: none; cursor: pointer; color: var(--ink);
+    padding: .8rem 1.5rem; border-radius: 999px; border: 3px solid var(--ink); background: var(--butter-deep);
+    box-shadow: 3px 3px 0 var(--ink); transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
   }
-  .btn:hover { transform: translateY(-2px); }
-  .btn-gold { background: var(--gold); color: var(--navy); }
-  .btn-gold:hover { background: #d8b232; }
-  .btn-ghost { border-color: rgba(255,255,255,.45); color: var(--white); }
-  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-soft); }
-  .btn-navy { background: var(--navy); color: var(--white); }
-  .btn-navy:hover { background: var(--navy-soft); }
+  .btn:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--ink); }
+  .btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+  .btn-mint { background: var(--mint-deep); color: var(--white); }
+  .btn-white { background: var(--white); }
+  .btn[disabled] { opacity: .55; cursor: not-allowed; transform: none; box-shadow: 3px 3px 0 var(--ink); }
 
   /* Header */
-  .site-header {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(11, 37, 69, .97); backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255,255,255,.08);
-  }
+  .site-header { position: sticky; top: 0; z-index: 100; background: rgba(255, 253, 249, .96); backdrop-filter: blur(8px); border-bottom: 3px solid var(--ink); }
   .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-  .logo {
-    display: flex; align-items: center; gap: .6rem; text-decoration: none;
-    font-family: var(--serif); font-weight: 600; font-size: 1.15rem; color: var(--white);
-  }
-  .logo svg { width: 32px; height: 32px; flex: none; }
-  .logo span em { font-style: normal; color: var(--gold); }
-
-  .nav-toggle {
-    background: none; border: 0; padding: .5rem; cursor: pointer; color: var(--white);
-  }
-  .nav-toggle .bars, .nav-toggle .bars::before, .nav-toggle .bars::after {
-    display: block; width: 24px; height: 2px; background: currentColor; border-radius: 2px;
-    transition: transform .25s ease, opacity .2s ease; content: "";
-  }
+  .logo { display: flex; align-items: center; gap: .55rem; text-decoration: none; font-family: var(--head); font-weight: 600; font-size: 1.2rem; }
+  .logo-badge { width: 38px; height: 38px; border-radius: 50%; background: var(--butter-deep); border: 3px solid var(--ink); display: grid; place-items: center; font-size: 1.1rem; }
+  .nav-toggle { background: var(--white); border: 3px solid var(--ink); border-radius: 14px; padding: .5rem .6rem; cursor: pointer; color: var(--ink); }
+  .nav-toggle .bars, .nav-toggle .bars::before, .nav-toggle .bars::after { display: block; width: 22px; height: 3px; background: currentColor; border-radius: 3px; content: ""; transition: transform .25s ease; }
   .nav-toggle .bars { position: relative; }
   .nav-toggle .bars::before { position: absolute; top: -7px; }
   .nav-toggle .bars::after { position: absolute; top: 7px; }
   .nav-toggle[aria-expanded="true"] .bars { background: transparent; }
   .nav-toggle[aria-expanded="true"] .bars::before { transform: translateY(7px) rotate(45deg); }
   .nav-toggle[aria-expanded="true"] .bars::after { transform: translateY(-7px) rotate(-45deg); }
-
   .nav-menu {
-    position: absolute; top: 68px; left: 0; right: 0; background: var(--navy);
-    list-style: none; margin: 0; padding: .5rem 1.25rem 1.5rem;
-    display: none; flex-direction: column; gap: .25rem;
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    position: absolute; top: 68px; left: 0; right: 0; background: var(--cream); list-style: none; margin: 0;
+    padding: .5rem 1.25rem 1.5rem; display: none; flex-direction: column; gap: .25rem; border-bottom: 3px solid var(--ink);
   }
   .nav-menu.open { display: flex; }
-  .nav-menu a {
-    display: block; padding: .75rem 0; text-decoration: none; color: rgba(255,255,255,.85);
-    font-weight: 500; transition: color .2s;
-  }
-  .nav-menu a:hover, .nav-menu a.active { color: var(--gold); }
-  .nav-menu .btn { margin-top: .5rem; color: var(--navy); }
-  .nav-menu .btn:hover { color: var(--navy); }
+  .nav-menu a { display: block; padding: .7rem 0; text-decoration: none; font-weight: 700; }
+  .nav-menu a:hover, .nav-menu a.active { text-decoration: underline wavy var(--mint-deep) 2px; text-underline-offset: 6px; }
+  .nav-menu .btn { margin-top: .5rem; }
+  .nav-menu .btn:hover, .nav-menu .btn.active { text-decoration: none; }
 
   /* Hero */
-  .hero {
-    position: relative; color: var(--white); overflow: hidden;
-    background:
-      radial-gradient(900px 500px at 85% -10%, rgba(201,162,39,.22), transparent 60%),
-      linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-soft) 100%);
-    padding: 4.5rem 0 5rem;
-  }
-  .hero::after {
-    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
-  .hero-grid { display: grid; gap: 3rem; align-items: center; }
-  .hero h1 { color: var(--white); font-size: 2.3rem; font-weight: 600; letter-spacing: -.01em; }
-  .hero h1 em { font-style: italic; color: var(--gold); }
-  .hero p.lead { font-size: 1.08rem; color: rgba(255,255,255,.8); max-width: 540px; }
-  .hero-actions { display: flex; flex-direction: column; gap: .75rem; margin-top: 1.75rem; }
-  .hero-trust {
-    display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin-top: 2rem;
-    font-size: .88rem; color: rgba(255,255,255,.7);
-  }
-  .hero-trust li { list-style: none; display: flex; align-items: center; gap: .5rem; }
-  .hero-trust svg { width: 16px; height: 16px; color: var(--gold); flex: none; }
-  .hero-trust { padding: 0; margin-bottom: 0; }
+  .hero { position: relative; overflow: hidden; background: var(--mint); border-bottom: 3px solid var(--ink); padding: 3.5rem 0 4rem; }
+  .blob { position: absolute; border-radius: 50%; z-index: 0; }
+  .blob-a { width: 260px; height: 260px; background: var(--butter); top: -80px; right: -60px; }
+  .blob-b { width: 160px; height: 160px; background: var(--peach); bottom: -50px; left: -40px; }
+  .hero-grid { position: relative; z-index: 1; display: grid; gap: 2.5rem; align-items: center; }
+  .hero h1 { font-size: 2.5rem; letter-spacing: -.01em; }
+  .hero h1 mark { background: var(--butter-deep); color: var(--ink); padding: 0 .25em; border-radius: 14px; }
+  .hero .lead { font-size: 1.15rem; max-width: 520px; }
+  .hero-actions { display: flex; flex-direction: column; gap: .9rem; margin-top: 1.5rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: .6rem; padding: 0; margin: 1.75rem 0 0; list-style: none; }
+  .chips li { background: var(--white); border: 2.5px solid var(--ink); border-radius: 999px; padding: .25rem .9rem; font-size: .9rem; font-weight: 700; }
+  .hero-art { max-width: 380px; margin: 0 auto; width: 100%; }
+  .float { animation: bob 3.6s ease-in-out infinite; }
+  @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-  .hero-card {
-    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
-    border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(6px);
-  }
-  .hero-card h2 { color: var(--white); font-size: 1.1rem; font-family: var(--sans); font-weight: 600; margin-bottom: 1rem; }
-  .hero-card svg { width: 100%; height: auto; }
-  .hero-card small { display: block; margin-top: .75rem; color: rgba(255,255,255,.6); font-size: .78rem; }
-
-  /* Services */
+  /* Cards */
   .cards { display: grid; gap: 1.25rem; }
   .card {
-    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
-    padding: 1.75rem; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    border: 3px solid var(--ink); border-radius: var(--r); padding: 1.6rem; box-shadow: var(--pop);
+    transition: transform .2s ease, box-shadow .2s ease;
   }
-  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--gold-soft); }
-  .icon {
-    width: 48px; height: 48px; border-radius: 12px; background: var(--navy); color: var(--gold);
-    display: grid; place-items: center; margin-bottom: 1.1rem;
-  }
-  .icon svg { width: 24px; height: 24px; }
-  .card h3 { font-size: 1.2rem; }
-  .card p { color: var(--muted); margin: 0; font-size: .96rem; }
+  .card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+  .card:nth-child(3n+1) { background: var(--mint); }
+  .card:nth-child(3n+2) { background: var(--butter); }
+  .card:nth-child(3n) { background: var(--peach); }
+  .card .emoji { font-size: 2rem; display: block; margin-bottom: .6rem; }
+  .card h3 { font-size: 1.3rem; margin-bottom: .1rem; }
+  .card .tag { font-size: .8rem; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; display: block; margin-bottom: .6rem; }
+  .card p { margin: 0; font-size: 1rem; }
 
-  /* Approach */
-  .approach { background: var(--white); border-block: 1px solid var(--line); }
-  .steps { display: grid; gap: 1.5rem; counter-reset: step; padding: 0; margin: 0; list-style: none; }
-  .steps li { position: relative; padding-left: 4rem; }
+  /* Process */
+  .band-mint { background: var(--mint); border-block: 3px solid var(--ink); }
+  .steps { display: grid; gap: 1.25rem; margin: 0; padding: 0; list-style: none; counter-reset: step; }
+  .steps li { background: var(--white); border: 3px solid var(--ink); border-radius: var(--r); padding: 1.5rem 1.4rem 1.4rem; position: relative; }
   .steps li::before {
-    counter-increment: step; content: counter(step, decimal-leading-zero);
-    position: absolute; left: 0; top: 0; width: 3rem; height: 3rem; border-radius: 50%;
-    display: grid; place-items: center; font: 600 1rem var(--serif);
-    color: var(--navy); background: var(--gold-soft); border: 2px solid var(--gold);
+    counter-increment: step; content: counter(step); position: absolute; top: -18px; left: 18px; width: 38px; height: 38px;
+    border-radius: 50%; background: var(--butter-deep); border: 3px solid var(--ink); display: grid; place-items: center; font: 600 1.1rem var(--head);
   }
-  .steps h3 { font-size: 1.15rem; margin-bottom: .25rem; }
-  .steps p { margin: 0; color: var(--muted); font-size: .96rem; }
+  .steps h3 { font-size: 1.2rem; margin-top: .4rem; }
+  .steps p { margin: 0; }
 
-  /* Calculator */
-  .calc-wrap { display: grid; gap: 1.5rem; }
-  .calc-form, .calc-result {
-    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
-    padding: 1.75rem; box-shadow: var(--shadow);
-  }
-  .field { margin-bottom: 1.25rem; }
-  .field label {
-    display: flex; justify-content: space-between; font-weight: 500; font-size: .92rem;
-    margin-bottom: .4rem; color: var(--navy);
-  }
-  .field label output { color: var(--gold); font-weight: 600; filter: brightness(.85); }
-  input[type="range"] { width: 100%; accent-color: var(--gold); }
-  .calc-result { background: var(--navy); color: var(--white); border: 0; display: flex; flex-direction: column; justify-content: center; }
-  .calc-result .label { font-size: .85rem; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.65); }
-  .calc-result .big { font: 600 2.4rem var(--serif); color: var(--gold); margin: .25rem 0 1rem; line-height: 1.1; word-break: break-word; }
-  .breakdown { display: grid; gap: .6rem; margin: 0 0 1.25rem; padding: 1rem 0 0; border-top: 1px solid rgba(255,255,255,.15); }
-  .breakdown div { display: flex; justify-content: space-between; font-size: .92rem; color: rgba(255,255,255,.85); }
-  .bar { height: 10px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,.15); display: flex; }
-  .bar span { display: block; height: 100%; transition: width .4s ease; }
-  .bar .b-principal { background: rgba(255,255,255,.55); }
-  .bar .b-growth { background: var(--gold); }
-  .fine { font-size: .78rem; color: var(--muted); margin-top: 1rem; }
-  .calc-result .fine { color: rgba(255,255,255,.55); margin-bottom: 0; }
+  /* Wealth-O-Meter */
+  .band-butter { background: var(--butter); border-block: 3px solid var(--ink); }
+  .meter-wrap { display: grid; gap: 1.5rem; }
+  .panel { background: var(--white); border: 3px solid var(--ink); border-radius: var(--r); padding: 1.6rem; box-shadow: var(--pop); }
+  .field { margin-bottom: 1.3rem; }
+  .field label { display: flex; justify-content: space-between; gap: 1rem; font-weight: 700; margin-bottom: .35rem; }
+  .field output { background: var(--mint); border: 2px solid var(--ink); border-radius: 999px; padding: 0 .7rem; font-size: .95rem; }
+  input[type="range"] { width: 100%; accent-color: var(--mint-deep); height: 28px; }
+  .fine { font-size: .82rem; color: var(--ink-soft); margin: 0; }
+  .meter-out { text-align: center; background: var(--mint); }
+  .piggy-stage { width: 200px; margin: 0 auto .25rem; }
+  .piggy-scale { transform-origin: 50% 90%; transition: transform .5s cubic-bezier(.3, 1.6, .5, 1); }
+  .coin.drop { animation: drop .7s ease-in; }
+  @keyframes drop { 0% { transform: translateY(-20px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(48px); opacity: 0; } }
+  .meter-label { font-weight: 700; font-size: .85rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+  .meter-big { font: 600 2.6rem var(--head); line-height: 1.1; margin: .1rem 0 .5rem; word-break: break-word; }
+  .meter-quip { font-weight: 700; min-height: 3.2em; }
+  .bar { height: 18px; border: 3px solid var(--ink); border-radius: 999px; overflow: hidden; display: flex; background: var(--white); margin: .75rem 0; }
+  .bar span { display: block; height: 100%; transition: width .45s ease; }
+  .bar .b-in { background: var(--mint-mid); border-right: 3px solid var(--ink); }
+  .bar .b-grow { background: var(--butter-deep); }
+  .legend { display: grid; gap: .4rem; text-align: left; margin-bottom: 1.25rem; }
+  .legend div { display: flex; justify-content: space-between; gap: 1rem; }
+  .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--ink); margin-right: .4rem; }
 
   /* About */
-  .about { background: var(--navy); color: var(--white); }
-  .about h2 { color: var(--white); }
-  .about .eyebrow { color: var(--gold); }
-  .about-grid { display: grid; gap: 2.5rem; }
-  .about p { color: rgba(255,255,255,.78); }
-  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .stat {
-    border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius); padding: 1.25rem;
-    background: rgba(255,255,255,.04);
-  }
-  .stat strong { display: block; font: 600 2rem var(--serif); color: var(--gold); line-height: 1.1; }
-  .stat span { font-size: .88rem; color: rgba(255,255,255,.7); }
-  .values { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: .9rem; }
-  .values li { display: flex; gap: .75rem; color: rgba(255,255,255,.85); }
-  .values svg { width: 20px; height: 20px; color: var(--gold); flex: none; margin-top: 3px; }
-  .values strong { color: var(--white); }
+  .about-grid { display: grid; gap: 2rem; }
+  .promises { list-style: none; padding: 0; margin: 1.25rem 0 0; display: grid; gap: .9rem; }
+  .promises li { display: flex; gap: .8rem; background: var(--white); border: 3px solid var(--ink); border-radius: 18px; padding: .9rem 1rem; }
+  .promises span.e { font-size: 1.4rem; line-height: 1.3; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-content: start; }
+  .stat { background: var(--mint); border: 3px solid var(--ink); border-radius: var(--r); padding: 1.1rem; box-shadow: var(--pop); }
+  .stat:nth-child(2) { background: var(--butter); }
+  .stat:nth-child(3) { background: var(--peach); }
+  .stat strong { display: block; font: 600 2rem var(--head); line-height: 1.1; }
+  .stat span { font-size: .9rem; }
 
   /* FAQ */
   .faq { max-width: 780px; }
-  details {
-    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
-    padding: 0 1.25rem; margin-bottom: .75rem; transition: border-color .2s;
-  }
-  details[open] { border-color: var(--gold); }
-  summary {
-    cursor: pointer; list-style: none; padding: 1.1rem 0; font-weight: 600; color: var(--navy);
-    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-  }
+  details { background: var(--white); border: 3px solid var(--ink); border-radius: 20px; padding: 0 1.25rem; margin-bottom: .8rem; }
+  details[open] { background: var(--mint); }
+  summary { cursor: pointer; list-style: none; padding: 1rem 0; font-weight: 700; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
   summary::-webkit-details-marker { display: none; }
-  summary::after { content: "+"; font: 400 1.5rem var(--sans); color: var(--gold); transition: transform .2s; }
+  summary::after { content: "+"; font: 600 1.6rem var(--head); transition: transform .2s; }
   details[open] summary::after { transform: rotate(45deg); }
-  details p { color: var(--muted); padding-bottom: 1.1rem; margin: 0; }
+  details p { padding-bottom: 1rem; margin: 0; }
 
-  /* Contact */
-  .contact { background: var(--white); border-top: 1px solid var(--line); }
-  .contact-grid { display: grid; gap: 2.5rem; }
-  .contact-info ul { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: 1.1rem; }
-  .contact-info li { display: flex; gap: .85rem; align-items: flex-start; }
-  .contact-info .icon { width: 42px; height: 42px; margin: 0; flex: none; }
-  .contact-info .icon svg { width: 20px; height: 20px; }
-  .contact-info small { display: block; color: var(--muted); font-size: .8rem; }
-  form.contact-form {
-    background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.75rem;
+  /* Quiz */
+  .quiz-grid { display: grid; gap: 2rem; }
+  .contact-list { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: .8rem; }
+  .contact-list li { background: var(--white); border: 3px solid var(--ink); border-radius: 18px; padding: .7rem 1rem; }
+  .contact-list small { display: block; color: var(--ink-soft); font-size: .8rem; }
+  .quiz { background: var(--white); border: 3px solid var(--ink); border-radius: var(--r); padding: 1.5rem; box-shadow: var(--pop); }
+  .progress { height: 16px; border: 3px solid var(--ink); border-radius: 999px; background: var(--cream); overflow: hidden; margin-bottom: .5rem; }
+  .progress span { display: block; height: 100%; background: var(--butter-deep); border-right: 3px solid var(--ink); transition: width .35s ease; }
+  .progress-text { font-size: .85rem; font-weight: 700; color: var(--ink-soft); margin-bottom: 1rem; }
+  fieldset.q-step { border: 0; margin: 0; padding: 0; min-width: 0; }
+  fieldset.q-step[hidden] { display: none; }
+  .q-step legend { font: 600 1.4rem var(--head); padding: 0; margin-bottom: .9rem; }
+  .q-hint { font-size: .9rem; color: var(--ink-soft); margin: -.4rem 0 .9rem; }
+  .choices { display: grid; gap: .6rem; }
+  .choice { position: relative; display: block; }
+  .choice input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+  .choice span { display: block; border: 3px solid var(--ink); border-radius: 18px; padding: .7rem 1rem; background: var(--cream); font-weight: 700; transition: background .15s, transform .15s; }
+  .choice:hover span { background: var(--mint); }
+  .choice input:checked + span { background: var(--butter-deep); box-shadow: 3px 3px 0 var(--ink); transform: translate(-1px, -1px); }
+  .choice input:focus-visible + span { outline: 3px solid var(--ink); outline-offset: 3px; }
+  .q-step input[type="text"], .q-step input[type="email"], .q-step input[type="tel"], .q-step textarea {
+    width: 100%; font: inherit; padding: .8rem 1rem; border: 3px solid var(--ink); border-radius: 18px; background: var(--cream); color: var(--ink);
   }
-  .row { display: grid; gap: 1rem; }
-  .form-field { margin-bottom: 1rem; }
-  .form-field label { display: block; font-size: .88rem; font-weight: 500; margin-bottom: .35rem; color: var(--navy); }
-  .form-field input, .form-field select, .form-field textarea {
-    width: 100%; font: inherit; padding: .8rem .9rem; border: 1.5px solid var(--line);
-    border-radius: 8px; background: var(--white); color: var(--text);
-    transition: border-color .2s, box-shadow .2s;
-  }
-  .form-field textarea { resize: vertical; min-height: 120px; }
-  .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
-    outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,162,39,.25);
-  }
-  .form-field.invalid input, .form-field.invalid select, .form-field.invalid textarea { border-color: #b3261e; }
-  .error-msg { display: none; color: #b3261e; font-size: .8rem; margin-top: .3rem; }
-  .form-field.invalid .error-msg { display: block; }
-  .form-status {
-    display: none; margin-top: 1rem; padding: .9rem 1rem; border-radius: 8px;
-    background: #eaf6ee; color: #14532d; border: 1px solid #b7e0c4; font-size: .93rem;
-  }
-  .form-status.show { display: block; }
+  .q-step textarea { min-height: 120px; resize: vertical; }
+  .q-step input:focus, .q-step textarea:focus { outline: 3px solid var(--butter-deep); outline-offset: 2px; background: var(--white); }
+  .q-error { min-height: 1.4em; color: var(--error); font-weight: 700; font-size: .92rem; margin: .6rem 0 0; }
+  .count { font-size: .8rem; color: var(--ink-soft); text-align: right; margin-top: .25rem; }
+  .q-nav { display: flex; justify-content: space-between; gap: .75rem; margin-top: 1rem; flex-wrap: wrap; }
+  .q-nav .btn { flex: 1 1 auto; }
+  .result { text-align: center; }
+  .result[hidden], .quiz-form[hidden] { display: none; }
+  .result .emoji { font-size: 3rem; }
+  .result h3 { font-size: 1.6rem; }
+  .notice { font-size: .85rem; background: var(--butter); border: 2px dashed var(--ink); border-radius: 14px; padding: .5rem .8rem; margin-top: 1rem; }
 
   /* Footer */
-  .site-footer { background: var(--navy-deep); color: rgba(255,255,255,.7); padding: 3rem 0 1.5rem; font-size: .9rem; }
+  .site-footer { background: var(--ink); color: var(--cream); padding: 3rem 0 1.5rem; font-size: .95rem; }
   .footer-grid { display: grid; gap: 2rem; margin-bottom: 2rem; }
-  .site-footer h3 { font: 600 .8rem var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: .9rem; }
-  .site-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
-  .site-footer a { text-decoration: none; transition: color .2s; }
-  .site-footer a:hover { color: var(--gold); }
-  .disclaimer { border-top: 1px solid rgba(255,255,255,.12); padding-top: 1.25rem; font-size: .78rem; color: rgba(255,255,255,.5); }
+  .site-footer h3 { font: 600 1rem var(--head); color: var(--butter-deep); margin-bottom: .8rem; }
+  .site-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .45rem; }
+  .site-footer a { text-decoration: none; }
+  .site-footer a:hover { color: var(--butter-deep); text-decoration: underline; }
+  .site-footer .logo { color: var(--cream); margin-bottom: 1rem; }
+  .disclaimer { border-top: 2px solid rgba(255, 253, 249, .25); padding-top: 1.25rem; font-size: .8rem; color: rgba(255, 253, 249, .75); }
   .disclaimer p { margin-bottom: .6rem; }
 
   .to-top {
-    position: fixed; right: 1rem; bottom: 1rem; width: 44px; height: 44px; border-radius: 50%;
-    background: var(--gold); color: var(--navy); border: 0; cursor: pointer; display: grid; place-items: center;
-    box-shadow: var(--shadow); opacity: 0; pointer-events: none; transform: translateY(10px);
-    transition: opacity .25s, transform .25s; z-index: 90;
+    position: fixed; right: 1rem; bottom: 1rem; width: 48px; height: 48px; border-radius: 50%; background: var(--butter-deep);
+    border: 3px solid var(--ink); font-size: 1.2rem; cursor: pointer; box-shadow: 3px 3px 0 var(--ink); opacity: 0; pointer-events: none;
+    transform: translateY(10px); transition: opacity .25s, transform .25s; z-index: 90; color: var(--ink);
   }
   .to-top.show { opacity: 1; pointer-events: auto; transform: none; }
-  .to-top svg { width: 20px; height: 20px; }
 
-  /* Reveal on scroll */
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
   .reveal.visible { opacity: 1; transform: none; }
   .no-js .reveal { opacity: 1; transform: none; }
@@ -300,350 +250,306 @@
     .reveal { opacity: 1; transform: none; }
   }
 
-  /* ---------- Tablet ---------- */
   @media (min-width: 768px) {
     .container { padding: 0 2rem; }
     .section { padding: 5rem 0; }
-    .section-head h2 { font-size: 2.3rem; }
-    .hero { padding: 6rem 0 6.5rem; }
-    .hero h1 { font-size: 3rem; }
-    .hero-actions { flex-direction: row; }
+    .section-head h2 { font-size: 2.5rem; }
+    .hero { padding: 5rem 0 5.5rem; }
+    .hero h1 { font-size: 3.2rem; }
+    .hero-actions { flex-direction: row; align-items: center; }
     .cards { grid-template-columns: repeat(2, 1fr); }
-    .steps { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-    .calc-wrap { grid-template-columns: 1fr 1fr; }
-    .row { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: repeat(2, 1fr); gap: 1.75rem; }
+    .meter-wrap { grid-template-columns: 1fr 1fr; }
     .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+    .quiz { padding: 2rem; }
   }
 
-  /* ---------- Desktop ---------- */
   @media (min-width: 1024px) {
     .nav-toggle { display: none; }
-    .nav-menu {
-      position: static; display: flex; flex-direction: row; align-items: center; gap: 1.75rem;
-      padding: 0; background: none; border: 0;
-    }
-    .nav-menu a { padding: .4rem 0; font-size: .92rem; }
-    .nav-menu .btn { margin: 0; padding: .6rem 1.25rem; }
-    .hero-grid { grid-template-columns: 1.15fr .85fr; gap: 4rem; }
-    .hero h1 { font-size: 3.5rem; }
+    .nav-menu { position: static; display: flex; flex-direction: row; align-items: center; gap: 1.5rem; padding: 0; background: none; border: 0; }
+    .nav-menu a { padding: .3rem 0; font-size: .95rem; }
+    .nav-menu .btn { margin: 0; padding: .55rem 1.15rem; }
+    .hero-grid { grid-template-columns: 1.1fr .9fr; gap: 4rem; }
+    .hero h1 { font-size: 3.8rem; }
     .cards { grid-template-columns: repeat(3, 1fr); }
     .steps { grid-template-columns: repeat(4, 1fr); }
-    .steps li { padding: 4rem 0 0; }
     .about-grid { grid-template-columns: 1.1fr .9fr; align-items: center; gap: 4rem; }
-    .contact-grid { grid-template-columns: .85fr 1.15fr; gap: 4rem; }
+    .quiz-grid { grid-template-columns: .8fr 1.2fr; gap: 3.5rem; align-items: start; }
     .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
-    .calc-result .big { font-size: 3rem; }
   }
 </style>
 </head>
 <body class="no-js">
 <a class="skip-link" href="#main">Skip to main content</a>
 
-<!-- Reusable SVG icons -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<svg width="0" height="0" class="hp" aria-hidden="true" focusable="false">
   <defs>
-    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
-    <symbol id="i-sunset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0M12 9V2M4.22 10.22l1.42 1.42M1 18h2M21 18h2M18.36 11.64l1.42-1.42M23 22H1M16 5l-4 4-4-4"/></symbol>
-    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></symbol>
-    <symbol id="i-receipt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l3-2 3 2 3-2 3 2 3-2 1 .7V2l-1 .7-3-2-3 2-3-2-3 2z"/><path d="M8 9h8M8 13h6"/></symbol>
-    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
-    <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
-    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
-    <symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></symbol>
+    <symbol id="piggy" viewBox="0 0 200 160">
+      <ellipse cx="100" cy="152" rx="62" ry="6" fill="#3B3835" opacity=".12"/>
+      <rect x="58" y="120" width="22" height="28" rx="9" fill="#F7B7B0" stroke="#3B3835" stroke-width="4"/>
+      <rect x="114" y="120" width="22" height="28" rx="9" fill="#F7B7B0" stroke="#3B3835" stroke-width="4"/>
+      <path d="M34 84c-18-6-12-22-4-24 8-2 12 8 6 12" fill="none" stroke="#3B3835" stroke-width="4" stroke-linecap="round"/>
+      <path d="M108 46l14-24 16 30z" fill="#F7B7B0" stroke="#3B3835" stroke-width="4" stroke-linejoin="round"/>
+      <ellipse cx="96" cy="88" rx="66" ry="50" fill="#FFC9C2" stroke="#3B3835" stroke-width="4"/>
+      <rect x="74" y="42" width="34" height="8" rx="4" fill="#3B3835"/>
+      <ellipse cx="160" cy="94" rx="16" ry="13" fill="#F7B7B0" stroke="#3B3835" stroke-width="4"/>
+      <circle cx="155" cy="94" r="2.5" fill="#3B3835"/>
+      <circle cx="165" cy="94" r="2.5" fill="#3B3835"/>
+      <circle cx="132" cy="76" r="5" fill="#3B3835"/>
+      <ellipse cx="124" cy="98" rx="9" ry="6" fill="#FF9F9A" opacity=".7"/>
+    </symbol>
   </defs>
 </svg>
 
 <header class="site-header">
   <div class="container nav">
     <a href="#top" class="logo" aria-label="Horizon Wealth Planning home">
-      <svg viewBox="0 0 32 32" aria-hidden="true">
-        <circle cx="16" cy="16" r="15" fill="none" stroke="#C9A227" stroke-width="1.5"/>
-        <path d="M5 20h22" stroke="#C9A227" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M9 20a7 7 0 0 1 14 0" fill="#C9A227"/>
-        <path d="M16 7v3M8.5 10.5l2 2M23.5 10.5l-2 2" stroke="#C9A227" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-      <span>Horizon <em>Wealth</em> Planning</span>
+      <span class="logo-badge" aria-hidden="true">🌅</span>
+      <span>Horizon Wealth Planning</span>
     </a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
-      <span class="bars"></span>
-    </button>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu"><span class="bars"></span></button>
     <ul class="nav-menu" id="nav-menu">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#approach">Our Approach</a></li>
-      <li><a href="#planner">Planner</a></li>
+      <li><a href="#services">What we help with</a></li>
+      <li><a href="#approach">How it works</a></li>
+      <li><a href="#meter">Wealth-O-Meter</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact" class="btn btn-gold">Book a Consultation</a></li>
+      <li><a href="#quiz" class="btn">Claim My Free Money Chat</a></li>
     </ul>
   </div>
 </header>
 
 <main id="main">
-  <!-- Hero -->
   <section class="hero" id="top">
+    <span class="blob blob-a" aria-hidden="true"></span>
+    <span class="blob blob-b" aria-hidden="true"></span>
     <div class="container hero-grid">
       <div>
-        <span class="eyebrow">Independent · Fiduciary · Fee-Transparent</span>
-        <h1>Plan with clarity. Build a future that <em>rises</em> with you.</h1>
-        <p class="lead">Horizon Wealth Planning helps individuals and families turn today's decisions into lasting financial confidence, with advice that is always in your best interest.</p>
+        <span class="eyebrow">☕ Independent · Fiduciary · Jargon-free</span>
+        <h1>Money stuff, <mark>minus the scary.</mark></h1>
+        <p class="lead">Horizon is your friendly financial sidekick. We turn "ugh, where do I even start?" into a simple plan that fits your real life, with advice that is always on your side.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-gold">Book a Free Consultation</a>
-          <a href="#planner" class="btn btn-ghost">Try the Growth Planner</a>
+          <a href="#quiz" class="btn">Meet Your Financial Sidekick</a>
+          <a href="#meter" class="btn btn-white">Play with the Wealth-O-Meter</a>
         </div>
-        <ul class="hero-trust">
-          <li><svg><use href="#i-check"/></svg>No product commissions</li>
-          <li><svg><use href="#i-check"/></svg>Client-first fiduciary standard</li>
-          <li><svg><use href="#i-check"/></svg>Complimentary first meeting</li>
+        <ul class="chips">
+          <li>🚫 No product commissions</li>
+          <li>🤝 Legally on your side</li>
+          <li>💬 Plain-English chats</li>
         </ul>
       </div>
-      <aside class="hero-card" aria-label="Illustrative portfolio growth">
-        <h2>The power of a long horizon</h2>
-        <svg viewBox="0 0 320 180" role="img" aria-label="Illustrative chart showing steady long-term growth">
-          <defs>
-            <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0" stop-color="#C9A227" stop-opacity=".45"/>
-              <stop offset="1" stop-color="#C9A227" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <g stroke="rgba(255,255,255,.12)" stroke-width="1">
-            <path d="M0 150h320M0 110h320M0 70h320M0 30h320"/>
-          </g>
-          <path d="M0 150 C40 146 70 140 100 128 S160 102 200 80 S270 40 320 18 V180 H0Z" fill="url(#g)"/>
-          <path d="M0 150 C40 146 70 140 100 128 S160 102 200 80 S270 40 320 18" fill="none" stroke="#C9A227" stroke-width="3" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1">
-            <animate attributeName="stroke-dashoffset" from="1" to="0" dur="1.8s" fill="freeze"/>
-          </path>
-          <circle cx="320" cy="18" r="5" fill="#C9A227"/>
-        </svg>
-        <small>Illustration only. Not a forecast or a guarantee of future results.</small>
-      </aside>
+      <div class="hero-art float" aria-hidden="true">
+        <svg viewBox="0 0 200 180"><use href="#piggy" y="14" width="200" height="160"/><circle cx="92" cy="14" r="12" fill="#F6D860" stroke="#3B3835" stroke-width="4"/><path d="M92 9v10" stroke="#3B3835" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
     </div>
   </section>
 
-  <!-- Services -->
   <section class="section" id="services">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">What we do</span>
-        <h2>Comprehensive planning, tailored to your life</h2>
-        <p>From your first savings goal to passing on a legacy, we coordinate every part of your financial picture so the pieces work together.</p>
+        <span class="eyebrow">What we help with</span>
+        <h2>Big money topics, explained like a friend would</h2>
+        <p>No finance-speak. Here is what each one means in everyday life.</p>
       </div>
       <div class="cards">
-        <article class="card reveal">
-          <div class="icon"><svg><use href="#i-sunset"/></svg></div>
-          <h3>Retirement Planning</h3>
-          <p>Map out when you can retire and how to fund the life you want, with income strategies built to last decades.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon"><svg><use href="#i-chart"/></svg></div>
-          <h3>Investment Management</h3>
-          <p>Diversified, goal-based portfolios aligned with your time horizon and risk tolerance, reviewed regularly.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon"><svg><use href="#i-receipt"/></svg></div>
-          <h3>Tax Strategy</h3>
-          <p>Coordinate accounts, timing and giving so you keep more of what you earn, working alongside your tax professional.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon"><svg><use href="#i-shield"/></svg></div>
-          <h3>Risk &amp; Protection</h3>
-          <p>Review insurance and contingency planning so an unexpected event does not derail the plan you have built.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon"><svg><use href="#i-home"/></svg></div>
-          <h3>Estate &amp; Legacy</h3>
-          <p>Organize wealth transfer, beneficiaries and charitable intentions so your wishes are honoured with minimal friction.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon"><svg><use href="#i-users"/></svg></div>
-          <h3>Family &amp; Education</h3>
-          <p>Plan for education costs, multigenerational goals and life transitions like marriage, a new home or a career change.</p>
-        </article>
+        <article class="card reveal"><span class="emoji" aria-hidden="true">🏡</span><h3>Future-You's Cozy Cabin</h3><span class="tag">Retirement planning</span><p>Figure out when you can slow down and how to fund it, so future-you has a comfy spot to land.</p></article>
+        <article class="card reveal"><span class="emoji" aria-hidden="true">🌱</span><h3>Your Money Garden</h3><span class="tag">Investment management</span><p>We plant a mix of things that suit you and your timeline, then tend the garden so you do not have to stare at it.</p></article>
+        <article class="card reveal"><span class="emoji" aria-hidden="true">🍪</span><h3>Keep More of Your Cookies</h3><span class="tag">Tax strategy</span><p>Smart timing and tidy accounts mean less of your hard-earned dough goes to the taxman, working alongside your tax pro.</p></article>
+        <article class="card reveal"><span class="emoji" aria-hidden="true">☂️</span><h3>Your Financial Umbrella</h3><span class="tag">Risk &amp; protection</span><p>Life gets rainy sometimes. We check you have the right cover so a surprise does not wash your plans away.</p></article>
+        <article class="card reveal"><span class="emoji" aria-hidden="true">📖</span><h3>Passing On the Recipe Book</h3><span class="tag">Estate &amp; legacy</span><p>Make sure the people and causes you love get what you intend, with clear instructions and fewer headaches.</p></article>
+        <article class="card reveal"><span class="emoji" aria-hidden="true">🎒</span><h3>The Family Adventure Fund</h3><span class="tag">Family &amp; education</span><p>School costs, a first home, a big move. We help you save for the chapters coming up next.</p></article>
       </div>
     </div>
   </section>
 
-  <!-- Approach -->
-  <section class="section approach" id="approach">
+  <section class="section band-mint" id="approach">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">Our approach</span>
-        <h2>A clear process, from first conversation to ongoing care</h2>
+        <span class="eyebrow">How it works</span>
+        <h2>Four easy steps, zero pressure</h2>
       </div>
       <ol class="steps">
-        <li class="reveal">
-          <h3>Discover</h3>
-          <p>We listen first: your goals, values, concerns and the full picture of your finances.</p>
-        </li>
-        <li class="reveal">
-          <h3>Design</h3>
-          <p>We build a written plan with clear priorities, trade-offs and measurable milestones.</p>
-        </li>
-        <li class="reveal">
-          <h3>Implement</h3>
-          <p>We put the plan into action, handling the details and coordinating with your other advisers.</p>
-        </li>
-        <li class="reveal">
-          <h3>Review</h3>
-          <p>Life changes, so your plan does too. We meet regularly and adjust as your circumstances evolve.</p>
-        </li>
+        <li class="reveal"><h3>Discover</h3><p>A relaxed chat about what you want, what worries you and where you are today.</p></li>
+        <li class="reveal"><h3>Design</h3><p>We sketch your money map in plain English, with clear priorities and trade-offs.</p></li>
+        <li class="reveal"><h3>Implement</h3><p>We take the first steps with you and handle the fiddly details.</p></li>
+        <li class="reveal"><h3>Review</h3><p>Life changes, so we check in and tweak the plan as you go.</p></li>
       </ol>
     </div>
   </section>
 
-  <!-- Planner / calculator -->
-  <section class="section" id="planner">
+  <section class="section band-butter" id="meter">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">Growth planner</span>
-        <h2>See how consistent saving can grow over time</h2>
-        <p>Adjust the sliders to explore an illustrative projection. It is a simple tool to start the conversation, not personalised advice.</p>
+        <span class="eyebrow">🐷 The Wealth-O-Meter</span>
+        <h2>Feed the piggy and watch it grow</h2>
+        <p>Slide the dials to see an illustrative "what if". It is a fun starting point for a chat, not a prediction.</p>
       </div>
-      <div class="calc-wrap reveal">
-        <form class="calc-form" id="calc" aria-label="Growth projection inputs" onsubmit="return false">
+      <div class="meter-wrap reveal">
+        <form class="panel" id="meter-form" aria-label="Wealth-O-Meter inputs" novalidate>
           <div class="field">
-            <label for="start">Current savings <output id="o-start" for="start">$50,000</output></label>
+            <label for="start">Piggy bank today <output id="o-start" for="start">$50,000</output></label>
             <input type="range" id="start" min="0" max="1000000" step="5000" value="50000">
           </div>
           <div class="field">
-            <label for="monthly">Monthly contribution <output id="o-monthly" for="monthly">$1,000</output></label>
+            <label for="monthly">Coins added each month <output id="o-monthly" for="monthly">$1,000</output></label>
             <input type="range" id="monthly" min="0" max="10000" step="100" value="1000">
           </div>
           <div class="field">
-            <label for="years">Time horizon <output id="o-years" for="years">20 years</output></label>
+            <label for="years">Years to snooze <output id="o-years" for="years">20 years</output></label>
             <input type="range" id="years" min="1" max="50" step="1" value="20">
           </div>
           <div class="field">
-            <label for="rate">Assumed annual return <output id="o-rate" for="rate">6.0%</output></label>
+            <label for="rate">Yearly growth guess <output id="o-rate" for="rate">6.0%</output></label>
             <input type="range" id="rate" min="0" max="12" step="0.5" value="6">
           </div>
-          <p class="fine">Assumes monthly compounding, constant returns, and no fees, taxes or inflation adjustment. Actual returns vary and may be negative.</p>
+          <p class="fine">Assumes steady yearly growth, compounded monthly, with no fees, taxes or inflation. Real returns bounce around and can be negative. For illustration only, not a forecast or advice.</p>
         </form>
-        <div class="calc-result" aria-live="polite">
-          <span class="label">Projected value</span>
-          <div class="big" id="r-total">$0</div>
-          <div class="bar" aria-hidden="true"><span class="b-principal" id="bar-p"></span><span class="b-growth" id="bar-g"></span></div>
-          <div class="breakdown">
-            <div><span>Total contributed</span><strong id="r-principal">$0</strong></div>
-            <div><span>Estimated growth</span><strong id="r-growth">$0</strong></div>
+        <div class="panel meter-out" aria-live="polite">
+          <div class="piggy-stage" aria-hidden="true">
+            <svg viewBox="0 0 200 180">
+              <circle id="coin" class="coin" cx="92" cy="22" r="12" fill="#F6D860" stroke="#3B3835" stroke-width="4"/>
+              <g id="piggy-scale" class="piggy-scale"><use href="#piggy" y="14" width="200" height="160"/></g>
+            </svg>
           </div>
-          <a href="#contact" class="btn btn-gold">Discuss your plan</a>
-          <p class="fine" style="margin-top:1rem">Hypothetical illustration only.</p>
+          <div class="meter-label">Your piggy could grow to about</div>
+          <div class="meter-big" id="r-total">$0</div>
+          <p class="meter-quip" id="r-quip"></p>
+          <div class="bar" aria-hidden="true"><span class="b-in" id="bar-in"></span><span class="b-grow" id="bar-grow"></span></div>
+          <div class="legend">
+            <div><span><i class="in" aria-hidden="true"></i>Coins you put in</span><strong id="r-in">$0</strong></div>
+            <div><span><i class="grow" aria-hidden="true"></i>Growth (maybe!)</span><strong id="r-grow">$0</strong></div>
+          </div>
+          <a href="#quiz" class="btn btn-mint">Turn This Into a Real Plan</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section class="section about" id="about">
+  <section class="section" id="about">
     <div class="container about-grid">
       <div class="reveal">
         <span class="eyebrow">About Horizon</span>
-        <h2>Advice built on trust, transparency and time</h2>
-        <p>We founded Horizon Wealth Planning on a simple belief: good financial advice should be clear, conflict-free and centred on you. As an independent firm, we are not tied to any product provider, so our recommendations answer to one thing only, your goals.</p>
-        <ul class="values">
-          <li><svg><use href="#i-check"/></svg><span><strong>Fiduciary duty.</strong> We are obligated to act in your best interest.</span></li>
-          <li><svg><use href="#i-check"/></svg><span><strong>Transparent fees.</strong> You always know what you pay and why.</span></li>
-          <li><svg><use href="#i-check"/></svg><span><strong>Plain language.</strong> No jargon, no pressure, just clear guidance.</span></li>
+        <h2>Advice that feels like a hug, not a lecture</h2>
+        <p>We started Horizon because good financial advice should be warm, clear and on your side. We are independent, so we are not tied to any product company. Our only job is your goals.</p>
+        <ul class="promises">
+          <li><span class="e" aria-hidden="true">🤝</span><span><strong>Fiduciary duty.</strong> We are obligated to act in your best interest.</span></li>
+          <li><span class="e" aria-hidden="true">🔍</span><span><strong>Open-book fees.</strong> You always know what you pay and why.</span></li>
+          <li><span class="e" aria-hidden="true">🗣️</span><span><strong>Plain language.</strong> No jargon, no pressure, no judgement.</span></li>
         </ul>
       </div>
       <div class="stats reveal" aria-label="Firm highlights">
-        <div class="stat"><strong>1:1</strong><span>Dedicated planner for every client</span></div>
-        <div class="stat"><strong>100%</strong><span>Independent, no product commissions</span></div>
-        <div class="stat"><strong>4</strong><span>Step planning process</span></div>
-        <div class="stat"><strong>Free</strong><span>Introductory consultation</span></div>
+        <div class="stat"><strong>1:1</strong><span>Your own planner, not a call centre</span></div>
+        <div class="stat"><strong>0</strong><span>Product commissions</span></div>
+        <div class="stat"><strong>4</strong><span>Easy steps</span></div>
+        <div class="stat"><strong>Free</strong><span>First money chat</span></div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="section" id="faq">
+  <section class="section band-mint" id="faq">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Questions</span>
-        <h2>Frequently asked</h2>
-      </div>
+      <div class="section-head reveal"><span class="eyebrow">Good questions</span><h2>Things people often wonder</h2></div>
       <div class="faq reveal">
-        <details>
-          <summary>What does it mean that Horizon is a fiduciary?</summary>
-          <p>A fiduciary is legally and ethically bound to put your interests ahead of their own. We do not earn commissions on products, which helps keep our advice free from conflicts.</p>
-        </details>
-        <details>
-          <summary>How are your fees structured?</summary>
-          <p>We use a transparent fee arrangement agreed in writing before any work begins. We will walk you through the details during your introductory consultation so there are no surprises.</p>
-        </details>
-        <details>
-          <summary>Do I need a large portfolio to work with you?</summary>
-          <p>Not necessarily. We work with people at many stages, including those just beginning to build wealth. Book a conversation and we will tell you honestly whether we are the right fit.</p>
-        </details>
-        <details>
-          <summary>What should I prepare for the first meeting?</summary>
-          <p>Just bring yourself and a sense of what matters to you. If you have recent statements or account summaries to hand, they help, but they are not required for the first conversation.</p>
-        </details>
-        <details>
-          <summary>How often will we meet?</summary>
-          <p>Most clients meet with us at least once or twice a year, with check-ins whenever life changes. You can reach us in between whenever questions come up.</p>
-        </details>
+        <details><summary>What does "fiduciary" even mean?</summary><p>It means we are legally and ethically bound to put your interests ahead of our own. We also do not earn commissions on products, which keeps our advice honest.</p></details>
+        <details><summary>How do your fees work?</summary><p>We agree on a clear fee in writing before any work begins, and we walk you through it in your first chat so there are no surprises.</p></details>
+        <details><summary>Do I need lots of savings to work with you?</summary><p>Nope. Many people come to us right at the start of their journey. Tell us where you are and we will honestly say whether we are a good fit.</p></details>
+        <details><summary>What should I bring to the first chat?</summary><p>Just yourself and a sense of what matters to you. Recent statements help but are not required.</p></details>
+        <details><summary>How often will we check in?</summary><p>Most people meet with us once or twice a year, plus whenever life changes. You can ask questions in between too.</p></details>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section class="section contact" id="contact">
-    <div class="container contact-grid">
-      <div class="contact-info reveal">
-        <span class="eyebrow">Get in touch</span>
-        <h2>Start with a conversation</h2>
-        <p>Tell us a little about your situation and we will arrange a complimentary, no-obligation introductory meeting, in person or by video.</p>
-        <ul>
-          <li><span class="icon"><svg><use href="#i-phone"/></svg></span><div><strong>+1 (555) 010-2040</strong><small>Mon to Fri, 9:00 to 17:30</small></div></li>
-          <li><span class="icon"><svg><use href="#i-mail"/></svg></span><div><strong>hello@horizonwealth.example</strong><small>We reply within one business day</small></div></li>
-          <li><span class="icon"><svg><use href="#i-pin"/></svg></span><div><strong>100 Harbour Street, Suite 2100</strong><small>Placeholder address</small></div></li>
+  <section class="section" id="quiz">
+    <div class="container quiz-grid">
+      <div class="reveal">
+        <span class="eyebrow">🎯 Financial Fit Quiz</span>
+        <h2>Find your fit in about a minute</h2>
+        <p>Answer a few quick questions, one at a time, and we will match you with the right kind of money chat. No jargon, no spam, no pressure.</p>
+        <ul class="contact-list">
+          <li><strong>hello@horizonwealth.example</strong><small>Placeholder email</small></li>
+          <li><strong>+1 (555) 010-2040</strong><small>Placeholder phone, Mon to Fri</small></li>
+          <li><strong>100 Harbour Street, Suite 2100</strong><small>Placeholder address</small></li>
         </ul>
       </div>
 
-      <form class="contact-form reveal" id="contact-form" novalidate>
-        <div class="row">
-          <div class="form-field">
-            <label for="name">Full name</label>
-            <input type="text" id="name" name="name" autocomplete="name" required>
-            <span class="error-msg">Please enter your name.</span>
+      <div class="quiz reveal">
+        <form class="quiz-form" id="quiz-form" novalidate autocomplete="off">
+          <div class="progress" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="6" aria-valuenow="1"><span id="progress-bar"></span></div>
+          <div class="progress-text" id="progress-text">Question 1 of 6</div>
+
+          <fieldset class="q-step" data-step="topic">
+            <legend>What are you most curious about?</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="topic" value="retire"><span>🏡 A cozy retirement</span></label>
+              <label class="choice"><input type="radio" name="topic" value="invest"><span>🌱 Growing my money</span></label>
+              <label class="choice"><input type="radio" name="topic" value="tax"><span>🍪 Paying less tax</span></label>
+              <label class="choice"><input type="radio" name="topic" value="protect"><span>☂️ Protecting what I have</span></label>
+              <label class="choice"><input type="radio" name="topic" value="legacy"><span>📖 Looking after my loved ones</span></label>
+              <label class="choice"><input type="radio" name="topic" value="family"><span>🎒 Saving for family plans</span></label>
+              <label class="choice"><input type="radio" name="topic" value="unsure"><span>🤷 Honestly? Not sure yet</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="stage" hidden>
+            <legend>Where are you on your money journey?</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="stage" value="start"><span>🌤️ Just getting started</span></label>
+              <label class="choice"><input type="radio" name="stage" value="build"><span>🧱 Building momentum</span></label>
+              <label class="choice"><input type="radio" name="stage" value="near"><span>🧭 Planning the next big chapter</span></label>
+              <label class="choice"><input type="radio" name="stage" value="enjoy"><span>🛋️ Already enjoying it, want to make it last</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="q-step" data-step="name" hidden>
+            <legend>What should we call you?</legend>
+            <label class="hp" for="q-name">First name</label>
+            <input type="text" id="q-name" name="name" maxlength="60" autocomplete="given-name" placeholder="Your first name">
+          </fieldset>
+
+          <fieldset class="q-step" data-step="email" hidden>
+            <legend>Where can we send your fit results?</legend>
+            <p class="q-hint">Just one friendly reply. We will never sell or share your details.</p>
+            <label class="hp" for="q-email">Email</label>
+            <input type="email" id="q-email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com">
+          </fieldset>
+
+          <fieldset class="q-step" data-step="phone" hidden>
+            <legend>Prefer a phone call? <small>(optional)</small></legend>
+            <p class="q-hint">Totally fine to skip this one.</p>
+            <label class="hp" for="q-phone">Phone</label>
+            <input type="tel" id="q-phone" name="phone" maxlength="20" autocomplete="tel" inputmode="tel" placeholder="+1 555 010 2040">
+          </fieldset>
+
+          <fieldset class="q-step" data-step="note" hidden>
+            <legend>Anything else on your mind? <small>(optional)</small></legend>
+            <label class="hp" for="q-note">Details</label>
+            <textarea id="q-note" name="note" maxlength="300" placeholder="Big goals, small worries, wild dreams..."></textarea>
+            <div class="count" id="note-count">0 / 300</div>
+          </fieldset>
+
+          <!-- Honeypots: invisible to people, tempting to bots -->
+          <div class="hp" aria-hidden="true">
+            <label for="hp-website">Leave this field empty</label>
+            <input type="text" id="hp-website" name="website" tabindex="-1" autocomplete="off">
+            <label for="hp-company">Company</label>
+            <input type="text" id="hp-company" name="company" tabindex="-1" autocomplete="off">
           </div>
-          <div class="form-field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email" required>
-            <span class="error-msg">Please enter a valid email address.</span>
+
+          <p class="q-error" id="q-error" role="alert"></p>
+          <div class="q-nav">
+            <button type="button" class="btn btn-white" id="btn-back" hidden>Back</button>
+            <button type="submit" class="btn" id="btn-next">Next</button>
           </div>
+        </form>
+
+        <div class="result" id="result" hidden aria-live="polite" tabindex="-1">
+          <div class="emoji" id="res-emoji" aria-hidden="true">🎉</div>
+          <h3 id="res-title"></h3>
+          <p id="res-body"></p>
+          <p class="fine" id="res-demo" hidden></p>
+          <button type="button" class="btn btn-white" id="btn-retake">Retake the quiz</button>
         </div>
-        <div class="row">
-          <div class="form-field">
-            <label for="phone">Phone (optional)</label>
-            <input type="tel" id="phone" name="phone" autocomplete="tel">
-            <span class="error-msg">Please enter a valid phone number.</span>
-          </div>
-          <div class="form-field">
-            <label for="topic">I'm interested in</label>
-            <select id="topic" name="topic" required>
-              <option value="">Select a topic</option>
-              <option>Retirement planning</option>
-              <option>Investment management</option>
-              <option>Tax strategy</option>
-              <option>Estate &amp; legacy</option>
-              <option>Something else</option>
-            </select>
-            <span class="error-msg">Please choose a topic.</span>
-          </div>
-        </div>
-        <div class="form-field">
-          <label for="message">How can we help?</label>
-          <textarea id="message" name="message" required minlength="10"></textarea>
-          <span class="error-msg">Please share a few details (at least 10 characters).</span>
-        </div>
-        <button type="submit" class="btn btn-navy">Request my consultation</button>
-        <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
-      </form>
+      </div>
     </div>
   </section>
 </main>
@@ -652,202 +558,326 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <a href="#top" class="logo" style="margin-bottom:1rem">
-          <svg viewBox="0 0 32 32" aria-hidden="true">
-            <circle cx="16" cy="16" r="15" fill="none" stroke="#C9A227" stroke-width="1.5"/>
-            <path d="M5 20h22" stroke="#C9A227" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M9 20a7 7 0 0 1 14 0" fill="#C9A227"/>
-          </svg>
-          <span>Horizon <em>Wealth</em> Planning</span>
-        </a>
-        <p>Independent financial planning for people who want clarity, confidence and a plan that grows with them.</p>
+        <a href="#top" class="logo"><span class="logo-badge" aria-hidden="true">🌅</span><span>Horizon Wealth Planning</span></a>
+        <p>Friendly, independent financial planning for people who want clarity, confidence and a plan that grows with them.</p>
       </div>
-      <div>
-        <h3>Explore</h3>
-        <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#approach">Our Approach</a></li>
-          <li><a href="#planner">Growth Planner</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Company</h3>
-        <ul>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#contact">Book a Consultation</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <ul>
-          <li>+1 (555) 010-2040</li>
-          <li>hello@horizonwealth.example</li>
-          <li>100 Harbour Street, Suite 2100</li>
-        </ul>
-      </div>
+      <div><h3>Explore</h3><ul><li><a href="#services">What we help with</a></li><li><a href="#approach">How it works</a></li><li><a href="#meter">Wealth-O-Meter</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><h3>Company</h3><ul><li><a href="#about">About us</a></li><li><a href="#quiz">Financial Fit Quiz</a></li></ul></div>
+      <div><h3>Say hi</h3><ul><li>+1 (555) 010-2040</li><li>hello@horizonwealth.example</li><li>100 Harbour Street, Suite 2100</li></ul></div>
     </div>
     <div class="disclaimer">
-      <p>This website is for general information only and does not constitute personalised financial, tax or legal advice. Projections and illustrations are hypothetical, are not guarantees, and do not account for fees, taxes or inflation. Investing involves risk, including possible loss of principal. Past performance is not indicative of future results.</p>
+      <p>This website is for general information only and is not personalised financial, tax or legal advice. Projections and illustrations are hypothetical, are not guarantees, and do not account for fees, taxes or inflation. Investing involves risk, including possible loss of principal. Past performance is not indicative of future results.</p>
       <p>&copy; <span id="year">2026</span> Horizon Wealth Planning. All rights reserved.</p>
     </div>
   </div>
 </footer>
 
-<button class="to-top" id="to-top" aria-label="Back to top"><svg><use href="#i-up"/></svg></button>
+<button class="to-top" id="to-top" type="button" aria-label="Back to top">↑</button>
 
 <script>
 (function () {
   'use strict';
   document.body.classList.remove('no-js');
 
-  /* ---------- Mobile navigation ---------- */
+  /* ================= Config ================= */
+  var CONFIG = {
+    endpoint: '',            // e.g. 'https://forms.example.com/horizon' (also add its origin to connect-src in the CSP)
+    minFillMs: 5000,         // faster than this = probably a bot
+    cooldownMs: 30000,       // minimum gap between submissions from this browser
+    maxPerHour: 3,           // UX-level rate limit (enforce for real on the server)
+    timeoutMs: 10000
+  };
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* ================= Navigation ================= */
   var toggle = document.querySelector('.nav-toggle');
-  var menu = document.getElementById('nav-menu');
+  var menu = $('nav-menu');
+  function setMenu(open) { menu.classList.toggle('open', open); toggle.setAttribute('aria-expanded', String(open)); }
+  toggle.addEventListener('click', function () { setMenu(toggle.getAttribute('aria-expanded') !== 'true'); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setMenu(false); } });
+  window.matchMedia('(min-width: 1024px)').addEventListener('change', function (e) { if (e.matches) setMenu(false); });
 
-  function setMenu(open) {
-    menu.classList.toggle('open', open);
-    toggle.setAttribute('aria-expanded', String(open));
-  }
-  toggle.addEventListener('click', function () {
-    setMenu(toggle.getAttribute('aria-expanded') !== 'true');
-  });
-  menu.addEventListener('click', function (e) {
-    if (e.target.closest('a')) setMenu(false);
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { setMenu(false); toggle.focus(); }
-  });
-  window.matchMedia('(min-width: 1024px)').addEventListener('change', function (e) {
-    if (e.matches) setMenu(false);
-  });
-
-  /* ---------- Active nav link on scroll ---------- */
   var links = Array.prototype.slice.call(menu.querySelectorAll('a[href^="#"]:not(.btn)'));
   var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
-
   function updateActive() {
-    var pos = window.scrollY + 120;
-    var current = null;
-    sections.forEach(function (s, i) { if (s && s.offsetTop <= pos) current = i; });
-    links.forEach(function (a, i) { a.classList.toggle('active', i === current); });
+    var pos = window.scrollY + 140, cur = -1;
+    sections.forEach(function (s, i) { if (s && s.offsetTop <= pos) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('active', i === cur); });
   }
-
-  /* ---------- Back to top ---------- */
-  var toTop = document.getElementById('to-top');
+  var toTop = $('to-top');
   toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-
   var ticking = false;
   window.addEventListener('scroll', function () {
     if (ticking) return;
     ticking = true;
-    requestAnimationFrame(function () {
-      toTop.classList.toggle('show', window.scrollY > 600);
-      updateActive();
-      ticking = false;
-    });
+    requestAnimationFrame(function () { toTop.classList.toggle('show', window.scrollY > 600); updateActive(); ticking = false; });
   }, { passive: true });
   updateActive();
 
-  /* ---------- Reveal on scroll ---------- */
+  /* ================= Reveal on scroll ================= */
   var reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); }
-      });
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } });
     }, { threshold: 0.12 });
-    reveals.forEach(function (el, i) {
-      el.style.transitionDelay = ((i % 3) * 80) + 'ms';
-      io.observe(el);
-    });
+    reveals.forEach(function (el, i) { el.style.transitionDelay = ((i % 3) * 80) + 'ms'; io.observe(el); });
   } else {
     reveals.forEach(function (el) { el.classList.add('visible'); });
   }
 
-  /* ---------- Growth planner ---------- */
-  var fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
-  var $ = function (id) { return document.getElementById(id); };
-  var inputs = { start: $('start'), monthly: $('monthly'), years: $('years'), rate: $('rate') };
+  /* ================= Wealth-O-Meter ================= */
+  var money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+  var inp = { start: $('start'), monthly: $('monthly'), years: $('years'), rate: $('rate') };
+  var firstRun = true;
 
-  function project() {
-    var P = +inputs.start.value;
-    var pmt = +inputs.monthly.value;
-    var yrs = +inputs.years.value;
-    var annual = +inputs.rate.value / 100;
-    var n = yrs * 12;
-    var r = annual / 12;
-    var growthFactor = Math.pow(1 + r, n);
-    var fv = r === 0
-      ? P + pmt * n
-      : P * growthFactor + pmt * ((growthFactor - 1) / r);
-    var contributed = P + pmt * n;
-    var gain = Math.max(fv - contributed, 0);
+  function quip(share, fv) {
+    if (fv <= 0) return 'Add a few coins and watch what happens!';
+    if (share < 0.2) return 'Every coin counts. The snowball is just starting to roll.';
+    if (share < 0.4) return 'Your money is starting to pitch in!';
+    if (share < 0.55) return 'Your money is working almost as hard as you are.';
+    return 'Your money is doing the heavy lifting here!';
+  }
 
-    $('o-start').textContent = fmt.format(P);
-    $('o-monthly').textContent = fmt.format(pmt);
+  function runMeter() {
+    var P = +inp.start.value, pmt = +inp.monthly.value, yrs = +inp.years.value, annual = +inp.rate.value / 100;
+    var n = yrs * 12, r = annual / 12, g = Math.pow(1 + r, n);
+    var fv = r === 0 ? P + pmt * n : P * g + pmt * ((g - 1) / r);
+    var put = P + pmt * n, gain = Math.max(fv - put, 0);
+
+    $('o-start').textContent = money.format(P);
+    $('o-monthly').textContent = money.format(pmt);
     $('o-years').textContent = yrs + (yrs === 1 ? ' year' : ' years');
-    $('o-rate').textContent = annual * 100 === Math.round(annual * 100)
-      ? (annual * 100).toFixed(1) + '%' : (annual * 100).toFixed(1) + '%';
+    $('o-rate').textContent = (annual * 100).toFixed(1) + '%';
+    $('r-total').textContent = money.format(fv);
+    $('r-in').textContent = money.format(put);
+    $('r-grow').textContent = money.format(gain);
 
-    $('r-total').textContent = fmt.format(fv);
-    $('r-principal').textContent = fmt.format(contributed);
-    $('r-growth').textContent = fmt.format(gain);
+    var share = fv > 0 ? gain / fv : 0;
+    $('r-quip').textContent = quip(share, fv);
+    var pctIn = fv > 0 ? Math.min((put / fv) * 100, 100) : 100;
+    $('bar-in').style.width = pctIn + '%';
+    $('bar-grow').style.width = Math.max(100 - pctIn, 0) + '%';
 
-    var pct = fv > 0 ? (contributed / fv) * 100 : 100;
-    $('bar-p').style.width = Math.min(pct, 100) + '%';
-    $('bar-g').style.width = Math.max(100 - pct, 0) + '%';
+    var scale = 0.86 + 0.3 * Math.min(1, Math.log10(1 + fv) / 7);
+    $('piggy-scale').style.transform = 'scale(' + scale.toFixed(3) + ')';
+
+    if (!firstRun) {
+      var coin = $('coin');
+      coin.classList.remove('drop');
+      void coin.getBoundingClientRect();
+      coin.classList.add('drop');
+    }
+    firstRun = false;
   }
-  Object.keys(inputs).forEach(function (k) { inputs[k].addEventListener('input', project); });
-  project();
+  Object.keys(inp).forEach(function (k) { inp[k].addEventListener('input', runMeter); });
+  $('meter-form').addEventListener('submit', function (e) { e.preventDefault(); });
+  runMeter();
 
-  /* ---------- Contact form ---------- */
-  var form = $('contact-form');
-  var status = $('form-status');
+  /* ================= Input hygiene ================= */
+  // NOTE: client-side checks are for UX and as a first filter only. Real protection against SQLi/XSS
+  // must live on the server: parameterised queries, output encoding, schema validation (see SECURITY.md).
+  function normalize(s) {
+    return String(s == null ? '' : s)
+      .normalize('NFKC')
+      .replace(/[\u0000-\u001F\u007F-\u009F​-‏‪-‮⁦-⁩﻿]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+  var SUSPICIOUS = [
+    /<\s*\/?\s*[a-z!?]/i,                       // HTML / script tags
+    /javascript\s*:|data\s*:\s*text\/html|vbscript\s*:/i,
+    /\bon[a-z]{3,}\s*=/i,                       // inline handlers such as onerror=
+    /\bunion\s+(all\s+)?select\b/i,             // SQLi: UNION SELECT
+    /\b(drop|truncate|alter)\s+table\b/i,       // SQLi: destructive statements
+    /\b(insert\s+into|delete\s+from)\b/i,
+    /['"`]\s*(or|and)\s+['"`]?\w+['"`]?\s*=/i,  // SQLi tautologies like ' OR 1=1
+    /;\s*(drop|select|insert|update|delete)\b/i,
+    /\/\*|\*\//,                                // SQL comments
+    /\$\{|\{\{|%3c|&#x?[0-9a-f]+;/i             // template / encoded injection
+  ];
+  function looksMalicious(s) { return SUSPICIOUS.some(function (re) { return re.test(s); }); }
 
-  function validateField(field) {
-    var wrap = field.closest('.form-field');
-    var value = field.value.trim();
-    var ok = true;
+  var RULES = {
+    name: function (v) {
+      v = normalize(v);
+      if (v.length < 2) return { error: 'Please tell us what to call you (at least 2 letters).' };
+      if (v.length > 60 || !/^[\p{L}][\p{L}\p{M} .'’-]*$/u.test(v)) return { error: 'Names can use letters, spaces, hyphens and apostrophes only.' };
+      return { value: v };
+    },
+    email: function (v) {
+      v = normalize(v).toLowerCase();
+      if (v.length > 254 || !/^[a-z0-9._%+-]{1,64}@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/.test(v)) return { error: 'That email does not look quite right. Mind checking it?' };
+      return { value: v };
+    },
+    phone: function (v) {
+      v = normalize(v);
+      if (!v) return { value: '' };
+      if (!/^\+?[0-9 ()-]{7,20}$/.test(v)) return { error: 'Phone numbers can only use digits, spaces, + ( ) and -.' };
+      return { value: v };
+    },
+    note: function (v) {
+      v = normalize(v);
+      if (looksMalicious(v)) return { error: 'Please use plain words here. Code and special symbols are not allowed.' };
+      v = v.replace(/[<>`]/g, '').replace(/\s+/g, ' ').trim();
+      if (v.length > 300) return { error: 'Please keep it under 300 characters.' };
+      return { value: v };
+    }
+  };
+  var CHOICES = {
+    topic: ['retire', 'invest', 'tax', 'protect', 'legacy', 'family', 'unsure'],
+    stage: ['start', 'build', 'near', 'enjoy']
+  };
 
-    if (field.required && !value) ok = false;
-    if (ok && field.type === 'email') ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
-    if (ok && field.type === 'tel' && value) ok = /^[+()\-.\s\d]{7,20}$/.test(value);
-    if (ok && field.id === 'message') ok = value.length >= 10;
+  /* ================= Quiz ================= */
+  var form = $('quiz-form');
+  var steps = Array.prototype.slice.call(form.querySelectorAll('.q-step'));
+  var btnBack = $('btn-back'), btnNext = $('btn-next'), errBox = $('q-error');
+  var idx = 0, human = false, startedAt = 0, busy = false;
+  var data = {};
 
-    wrap.classList.toggle('invalid', !ok);
-    field.setAttribute('aria-invalid', String(!ok));
-    return ok;
+  function markHuman() {
+    if (!human) { human = true; startedAt = Date.now(); }
+  }
+  ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) { form.addEventListener(ev, markHuman, { passive: true }); });
+
+  function showStep(i) {
+    idx = i;
+    steps.forEach(function (s, j) { s.hidden = j !== i; });
+    var pct = ((i + 1) / steps.length) * 100;
+    $('progress-bar').style.width = pct + '%';
+    form.querySelector('.progress').setAttribute('aria-valuenow', String(i + 1));
+    $('progress-text').textContent = 'Question ' + (i + 1) + ' of ' + steps.length;
+    btnBack.hidden = i === 0;
+    btnNext.textContent = i === steps.length - 1 ? 'Send it 🚀' : 'Next';
+    errBox.textContent = '';
+    var f = steps[i].querySelector('input:not([type="radio"]), textarea, input[type="radio"]');
+    if (f && i > 1) f.focus();
   }
 
-  var fields = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea'));
-  fields.forEach(function (f) {
-    f.addEventListener('blur', function () { validateField(f); });
-    f.addEventListener('input', function () {
-      if (f.closest('.form-field').classList.contains('invalid')) validateField(f);
-    });
+  function readStep(i) {
+    var key = steps[i].getAttribute('data-step');
+    if (CHOICES[key]) {
+      var picked = form.querySelector('input[name="' + key + '"]:checked');
+      if (!picked || CHOICES[key].indexOf(picked.value) === -1) return { key: key, error: 'Pick the one that fits best to continue.' };
+      return { key: key, value: picked.value };
+    }
+    var el = steps[i].querySelector('input, textarea');
+    var res = RULES[key](el.value);
+    res.key = key;
+    return res;
+  }
+
+  function tryAdvance() {
+    var res = readStep(idx);
+    if (res.error) { errBox.textContent = res.error; return false; }
+    data[res.key] = res.value;
+    errBox.textContent = '';
+    if (idx < steps.length - 1) { showStep(idx + 1); return false; }
+    return true;
+  }
+
+  btnBack.addEventListener('click', function () { if (idx > 0) showStep(idx - 1); });
+  $('q-note').addEventListener('input', function (e) { $('note-count').textContent = e.target.value.length + ' / 300'; });
+  form.addEventListener('change', function (e) {
+    if (e.target.type === 'radio') errBox.textContent = '';
   });
+
+  /* UX-level rate limiting (browser only; enforce for real on the server) */
+  function rateLimited() {
+    try {
+      var now = Date.now();
+      var log = JSON.parse(localStorage.getItem('hwp_submits') || '[]').filter(function (t) { return typeof t === 'number' && now - t < 3600000; });
+      localStorage.setItem('hwp_submits', JSON.stringify(log));
+      if (log.length && now - log[log.length - 1] < CONFIG.cooldownMs) return true;
+      return log.length >= CONFIG.maxPerHour;
+    } catch (err) { return false; }
+  }
+  function recordSubmit() {
+    try {
+      var log = JSON.parse(localStorage.getItem('hwp_submits') || '[]');
+      log.push(Date.now());
+      localStorage.setItem('hwp_submits', JSON.stringify(log.slice(-10)));
+    } catch (err) { /* storage unavailable: ignore */ }
+  }
+
+  var OUTCOMES = {
+    retire:  ['🏡', 'Your fit: the Cozy Cabin chat', 'We will map out when you could slow down and how to fund it.'],
+    invest:  ['🌱', 'Your fit: the Money Garden chat', 'We will talk about growing your savings in a way that suits your timeline.'],
+    tax:     ['🍪', 'Your fit: the Keep-Your-Cookies chat', 'We will look at simple ways to keep more of what you earn.'],
+    protect: ['☂️', 'Your fit: the Umbrella chat', 'We will check your safety net so surprises do not derail you.'],
+    legacy:  ['📖', 'Your fit: the Recipe Book chat', 'We will sort out how to look after the people and causes you love.'],
+    family:  ['🎒', 'Your fit: the Family Adventure chat', 'We will plan for the big chapters coming up for you and yours.'],
+    unsure:  ['🤷', 'Your fit: the Just-Say-Hi chat', 'No pressure. We will help you figure out what matters most first.']
+  };
+
+  function finish(demo) {
+    var o = OUTCOMES[data.topic] || OUTCOMES.unsure;
+    $('res-emoji').textContent = o[0];
+    $('res-title').textContent = o[1];
+    $('res-body').textContent = 'Thanks, ' + data.name + '! ' + o[2];
+    var d = $('res-demo');
+    d.hidden = !demo;
+    d.textContent = demo ? 'Demo mode: no form endpoint is configured, so nothing was sent.' : '';
+    form.hidden = true;
+    $('result').hidden = false;
+    $('result').focus();
+  }
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    status.classList.remove('show');
+    if (busy) return;
+    if (!tryAdvance()) return;
 
-    var firstBad = null;
-    fields.forEach(function (f) {
-      if (!validateField(f) && !firstBad) firstBad = f;
+    // Re-validate everything before sending
+    var payload = {};
+    for (var i = 0; i < steps.length; i++) {
+      var r = readStep(i);
+      if (r.error) { showStep(i); errBox.textContent = r.error; return; }
+      payload[r.key] = r.value;
+    }
+
+    // Anti-bot checks. Bots get a fake success so they learn nothing.
+    var trapped = $('hp-website').value !== '' || $('hp-company').value !== '' ||
+                  !human || (Date.now() - startedAt) < CONFIG.minFillMs;
+    if (trapped) { finish(false); return; }
+
+    if (rateLimited()) { errBox.textContent = 'Whoa, speedy! Please wait a little while before sending another one.'; return; }
+
+    if (!CONFIG.endpoint) { recordSubmit(); finish(true); return; }
+
+    busy = true; btnNext.disabled = true; btnNext.textContent = 'Sending...';
+    var ctrl = ('AbortController' in window) ? new AbortController() : null;
+    var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, CONFIG.timeoutMs) : null;
+    fetch(CONFIG.endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      credentials: 'omit',
+      referrerPolicy: 'no-referrer',
+      signal: ctrl ? ctrl.signal : undefined
+    }).then(function (res) {
+      if (!res.ok) throw new Error('bad status');
+      recordSubmit();
+      finish(false);
+    }).catch(function () {
+      errBox.textContent = 'Oops, that did not go through. Please try again in a moment.';
+    }).then(function () {
+      if (timer) clearTimeout(timer);
+      busy = false; btnNext.disabled = false;
+      if (!form.hidden) btnNext.textContent = 'Send it 🚀';
     });
-    if (firstBad) { firstBad.focus(); return; }
-
-    // No backend is wired up: replace this block with a fetch() to your form endpoint.
-    var name = $('name').value.trim().split(' ')[0];
-    status.textContent = 'Thank you, ' + name + '. Your request has been received and a planner will be in touch within one business day.';
-    status.classList.add('show');
-    form.reset();
-    fields.forEach(function (f) { f.removeAttribute('aria-invalid'); });
   });
 
-  /* ---------- Footer year ---------- */
+  $('btn-retake').addEventListener('click', function () {
+    form.reset(); data = {}; human = false; startedAt = 0;
+    $('note-count').textContent = '0 / 300';
+    $('result').hidden = true; form.hidden = false;
+    showStep(0);
+  });
+  showStep(0);
+
+  /* ================= Footer year ================= */
   $('year').textContent = new Date().getFullYear();
 })();
 </script>
