@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Horizon Wealth Planning | Independent Financial Planning</title>
+<meta name="description" content="Horizon Wealth Planning offers independent, fiduciary financial planning for retirement, investments, tax strategy and legacy planning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B2545;
+    --navy-deep: #081a31;
+    --navy-soft: #13315c;
+    --gold: #C9A227;
+    --gold-soft: #e6d18a;
+    --bg: #F7F9FC;
+    --white: #ffffff;
+    --text: #1d2a3a;
+    --muted: #5b6b80;
+    --line: #dde4ee;
+    --radius: 12px;
+    --shadow: 0 10px 30px rgba(11, 37, 69, 0.08);
+    --serif: "Playfair Display", Georgia, serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg { max-width: 100%; display: block; }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: var(--serif); color: var(--navy); line-height: 1.2; margin: 0 0 .5em; }
+  p { margin: 0 0 1em; }
+
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+  .container { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 1.25rem; }
+  .skip-link {
+    position: absolute; left: -999px; top: 0; background: var(--gold); color: var(--navy);
+    padding: .75rem 1rem; z-index: 200; font-weight: 600;
+  }
+  .skip-link:focus { left: 0; }
+
+  .eyebrow {
+    display: inline-block; font-size: .78rem; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: .75rem;
+  }
+  .section { padding: 4rem 0; }
+  .section-head { max-width: 640px; margin-bottom: 2.5rem; }
+  .section-head h2 { font-size: 1.9rem; }
+  .section-head p { color: var(--muted); }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    font: 600 .95rem var(--sans); text-decoration: none; cursor: pointer;
+    padding: .85rem 1.5rem; border-radius: 999px; border: 2px solid transparent;
+    transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-gold:hover { background: #d8b232; }
+  .btn-ghost { border-color: rgba(255,255,255,.45); color: var(--white); }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-soft); }
+  .btn-navy { background: var(--navy); color: var(--white); }
+  .btn-navy:hover { background: var(--navy-soft); }
+
+  /* Header */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(11, 37, 69, .97); backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo {
+    display: flex; align-items: center; gap: .6rem; text-decoration: none;
+    font-family: var(--serif); font-weight: 600; font-size: 1.15rem; color: var(--white);
+  }
+  .logo svg { width: 32px; height: 32px; flex: none; }
+  .logo span em { font-style: normal; color: var(--gold); }
+
+  .nav-toggle {
+    background: none; border: 0; padding: .5rem; cursor: pointer; color: var(--white);
+  }
+  .nav-toggle .bars, .nav-toggle .bars::before, .nav-toggle .bars::after {
+    display: block; width: 24px; height: 2px; background: currentColor; border-radius: 2px;
+    transition: transform .25s ease, opacity .2s ease; content: "";
+  }
+  .nav-toggle .bars { position: relative; }
+  .nav-toggle .bars::before { position: absolute; top: -7px; }
+  .nav-toggle .bars::after { position: absolute; top: 7px; }
+  .nav-toggle[aria-expanded="true"] .bars { background: transparent; }
+  .nav-toggle[aria-expanded="true"] .bars::before { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .bars::after { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-menu {
+    position: absolute; top: 68px; left: 0; right: 0; background: var(--navy);
+    list-style: none; margin: 0; padding: .5rem 1.25rem 1.5rem;
+    display: none; flex-direction: column; gap: .25rem;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .nav-menu.open { display: flex; }
+  .nav-menu a {
+    display: block; padding: .75rem 0; text-decoration: none; color: rgba(255,255,255,.85);
+    font-weight: 500; transition: color .2s;
+  }
+  .nav-menu a:hover, .nav-menu a.active { color: var(--gold); }
+  .nav-menu .btn { margin-top: .5rem; color: var(--navy); }
+  .nav-menu .btn:hover { color: var(--navy); }
+
+  /* Hero */
+  .hero {
+    position: relative; color: var(--white); overflow: hidden;
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(201,162,39,.22), transparent 60%),
+      linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-soft) 100%);
+    padding: 4.5rem 0 5rem;
+  }
+  .hero::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .hero-grid { display: grid; gap: 3rem; align-items: center; }
+  .hero h1 { color: var(--white); font-size: 2.3rem; font-weight: 600; letter-spacing: -.01em; }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero p.lead { font-size: 1.08rem; color: rgba(255,255,255,.8); max-width: 540px; }
+  .hero-actions { display: flex; flex-direction: column; gap: .75rem; margin-top: 1.75rem; }
+  .hero-trust {
+    display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin-top: 2rem;
+    font-size: .88rem; color: rgba(255,255,255,.7);
+  }
+  .hero-trust li { list-style: none; display: flex; align-items: center; gap: .5rem; }
+  .hero-trust svg { width: 16px; height: 16px; color: var(--gold); flex: none; }
+  .hero-trust { padding: 0; margin-bottom: 0; }
+
+  .hero-card {
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
+    border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(6px);
+  }
+  .hero-card h2 { color: var(--white); font-size: 1.1rem; font-family: var(--sans); font-weight: 600; margin-bottom: 1rem; }
+  .hero-card svg { width: 100%; height: auto; }
+  .hero-card small { display: block; margin-top: .75rem; color: rgba(255,255,255,.6); font-size: .78rem; }
+
+  /* Services */
+  .cards { display: grid; gap: 1.25rem; }
+  .card {
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 1.75rem; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--gold-soft); }
+  .icon {
+    width: 48px; height: 48px; border-radius: 12px; background: var(--navy); color: var(--gold);
+    display: grid; place-items: center; margin-bottom: 1.1rem;
+  }
+  .icon svg { width: 24px; height: 24px; }
+  .card h3 { font-size: 1.2rem; }
+  .card p { color: var(--muted); margin: 0; font-size: .96rem; }
+
+  /* Approach */
+  .approach { background: var(--white); border-block: 1px solid var(--line); }
+  .steps { display: grid; gap: 1.5rem; counter-reset: step; padding: 0; margin: 0; list-style: none; }
+  .steps li { position: relative; padding-left: 4rem; }
+  .steps li::before {
+    counter-increment: step; content: counter(step, decimal-leading-zero);
+    position: absolute; left: 0; top: 0; width: 3rem; height: 3rem; border-radius: 50%;
+    display: grid; place-items: center; font: 600 1rem var(--serif);
+    color: var(--navy); background: var(--gold-soft); border: 2px solid var(--gold);
+  }
+  .steps h3 { font-size: 1.15rem; margin-bottom: .25rem; }
+  .steps p { margin: 0; color: var(--muted); font-size: .96rem; }
+
+  /* Calculator */
+  .calc-wrap { display: grid; gap: 1.5rem; }
+  .calc-form, .calc-result {
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 1.75rem; box-shadow: var(--shadow);
+  }
+  .field { margin-bottom: 1.25rem; }
+  .field label {
+    display: flex; justify-content: space-between; font-weight: 500; font-size: .92rem;
+    margin-bottom: .4rem; color: var(--navy);
+  }
+  .field label output { color: var(--gold); font-weight: 600; filter: brightness(.85); }
+  input[type="range"] { width: 100%; accent-color: var(--gold); }
+  .calc-result { background: var(--navy); color: var(--white); border: 0; display: flex; flex-direction: column; justify-content: center; }
+  .calc-result .label { font-size: .85rem; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.65); }
+  .calc-result .big { font: 600 2.4rem var(--serif); color: var(--gold); margin: .25rem 0 1rem; line-height: 1.1; word-break: break-word; }
+  .breakdown { display: grid; gap: .6rem; margin: 0 0 1.25rem; padding: 1rem 0 0; border-top: 1px solid rgba(255,255,255,.15); }
+  .breakdown div { display: flex; justify-content: space-between; font-size: .92rem; color: rgba(255,255,255,.85); }
+  .bar { height: 10px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,.15); display: flex; }
+  .bar span { display: block; height: 100%; transition: width .4s ease; }
+  .bar .b-principal { background: rgba(255,255,255,.55); }
+  .bar .b-growth { background: var(--gold); }
+  .fine { font-size: .78rem; color: var(--muted); margin-top: 1rem; }
+  .calc-result .fine { color: rgba(255,255,255,.55); margin-bottom: 0; }
+
+  /* About */
+  .about { background: var(--navy); color: var(--white); }
+  .about h2 { color: var(--white); }
+  .about .eyebrow { color: var(--gold); }
+  .about-grid { display: grid; gap: 2.5rem; }
+  .about p { color: rgba(255,255,255,.78); }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .stat {
+    border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius); padding: 1.25rem;
+    background: rgba(255,255,255,.04);
+  }
+  .stat strong { display: block; font: 600 2rem var(--serif); color: var(--gold); line-height: 1.1; }
+  .stat span { font-size: .88rem; color: rgba(255,255,255,.7); }
+  .values { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: .9rem; }
+  .values li { display: flex; gap: .75rem; color: rgba(255,255,255,.85); }
+  .values svg { width: 20px; height: 20px; color: var(--gold); flex: none; margin-top: 3px; }
+  .values strong { color: var(--white); }
+
+  /* FAQ */
+  .faq { max-width: 780px; }
+  details {
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 0 1.25rem; margin-bottom: .75rem; transition: border-color .2s;
+  }
+  details[open] { border-color: var(--gold); }
+  summary {
+    cursor: pointer; list-style: none; padding: 1.1rem 0; font-weight: 600; color: var(--navy);
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font: 400 1.5rem var(--sans); color: var(--gold); transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--muted); padding-bottom: 1.1rem; margin: 0; }
+
+  /* Contact */
+  .contact { background: var(--white); border-top: 1px solid var(--line); }
+  .contact-grid { display: grid; gap: 2.5rem; }
+  .contact-info ul { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: 1.1rem; }
+  .contact-info li { display: flex; gap: .85rem; align-items: flex-start; }
+  .contact-info .icon { width: 42px; height: 42px; margin: 0; flex: none; }
+  .contact-info .icon svg { width: 20px; height: 20px; }
+  .contact-info small { display: block; color: var(--muted); font-size: .8rem; }
+  form.contact-form {
+    background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.75rem;
+  }
+  .row { display: grid; gap: 1rem; }
+  .form-field { margin-bottom: 1rem; }
+  .form-field label { display: block; font-size: .88rem; font-weight: 500; margin-bottom: .35rem; color: var(--navy); }
+  .form-field input, .form-field select, .form-field textarea {
+    width: 100%; font: inherit; padding: .8rem .9rem; border: 1.5px solid var(--line);
+    border-radius: 8px; background: var(--white); color: var(--text);
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .form-field textarea { resize: vertical; min-height: 120px; }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+    outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,162,39,.25);
+  }
+  .form-field.invalid input, .form-field.invalid select, .form-field.invalid textarea { border-color: #b3261e; }
+  .error-msg { display: none; color: #b3261e; font-size: .8rem; margin-top: .3rem; }
+  .form-field.invalid .error-msg { display: block; }
+  .form-status {
+    display: none; margin-top: 1rem; padding: .9rem 1rem; border-radius: 8px;
+    background: #eaf6ee; color: #14532d; border: 1px solid #b7e0c4; font-size: .93rem;
+  }
+  .form-status.show { display: block; }
+
+  /* Footer */
+  .site-footer { background: var(--navy-deep); color: rgba(255,255,255,.7); padding: 3rem 0 1.5rem; font-size: .9rem; }
+  .footer-grid { display: grid; gap: 2rem; margin-bottom: 2rem; }
+  .site-footer h3 { font: 600 .8rem var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: .9rem; }
+  .site-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
+  .site-footer a { text-decoration: none; transition: color .2s; }
+  .site-footer a:hover { color: var(--gold); }
+  .disclaimer { border-top: 1px solid rgba(255,255,255,.12); padding-top: 1.25rem; font-size: .78rem; color: rgba(255,255,255,.5); }
+  .disclaimer p { margin-bottom: .6rem; }
+
+  .to-top {
+    position: fixed; right: 1rem; bottom: 1rem; width: 44px; height: 44px; border-radius: 50%;
+    background: var(--gold); color: var(--navy); border: 0; cursor: pointer; display: grid; place-items: center;
+    box-shadow: var(--shadow); opacity: 0; pointer-events: none; transform: translateY(10px);
+    transition: opacity .25s, transform .25s; z-index: 90;
+  }
+  .to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+  .to-top svg { width: 20px; height: 20px; }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .no-js .reveal { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  /* ---------- Tablet ---------- */
+  @media (min-width: 768px) {
+    .container { padding: 0 2rem; }
+    .section { padding: 5rem 0; }
+    .section-head h2 { font-size: 2.3rem; }
+    .hero { padding: 6rem 0 6.5rem; }
+    .hero h1 { font-size: 3rem; }
+    .hero-actions { flex-direction: row; }
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .calc-wrap { grid-template-columns: 1fr 1fr; }
+    .row { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+  }
+
+  /* ---------- Desktop ---------- */
+  @media (min-width: 1024px) {
+    .nav-toggle { display: none; }
+    .nav-menu {
+      position: static; display: flex; flex-direction: row; align-items: center; gap: 1.75rem;
+      padding: 0; background: none; border: 0;
+    }
+    .nav-menu a { padding: .4rem 0; font-size: .92rem; }
+    .nav-menu .btn { margin: 0; padding: .6rem 1.25rem; }
+    .hero-grid { grid-template-columns: 1.15fr .85fr; gap: 4rem; }
+    .hero h1 { font-size: 3.5rem; }
+    .cards { grid-template-columns: repeat(3, 1fr); }
+    .steps { grid-template-columns: repeat(4, 1fr); }
+    .steps li { padding: 4rem 0 0; }
+    .about-grid { grid-template-columns: 1.1fr .9fr; align-items: center; gap: 4rem; }
+    .contact-grid { grid-template-columns: .85fr 1.15fr; gap: 4rem; }
+    .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+    .calc-result .big { font-size: 3rem; }
+  }
+</style>
+</head>
+<body class="no-js">
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- Reusable SVG icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-sunset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0M12 9V2M4.22 10.22l1.42 1.42M1 18h2M21 18h2M18.36 11.64l1.42-1.42M23 22H1M16 5l-4 4-4-4"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></symbol>
+    <symbol id="i-receipt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l3-2 3 2 3-2 3 2 3-2 1 .7V2l-1 .7-3-2-3 2-3-2-3 2z"/><path d="M8 9h8M8 13h6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></symbol>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="#top" class="logo" aria-label="Horizon Wealth Planning home">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="15" fill="none" stroke="#C9A227" stroke-width="1.5"/>
+        <path d="M5 20h22" stroke="#C9A227" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M9 20a7 7 0 0 1 14 0" fill="#C9A227"/>
+        <path d="M16 7v3M8.5 10.5l2 2M23.5 10.5l-2 2" stroke="#C9A227" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span>Horizon <em>Wealth</em> Planning</span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+      <span class="bars"></span>
+    </button>
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Our Approach</a></li>
+      <li><a href="#planner">Planner</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="btn btn-gold">Book a Consultation</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Independent · Fiduciary · Fee-Transparent</span>
+        <h1>Plan with clarity. Build a future that <em>rises</em> with you.</h1>
+        <p class="lead">Horizon Wealth Planning helps individuals and families turn today's decisions into lasting financial confidence, with advice that is always in your best interest.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-gold">Book a Free Consultation</a>
+          <a href="#planner" class="btn btn-ghost">Try the Growth Planner</a>
+        </div>
+        <ul class="hero-trust">
+          <li><svg><use href="#i-check"/></svg>No product commissions</li>
+          <li><svg><use href="#i-check"/></svg>Client-first fiduciary standard</li>
+          <li><svg><use href="#i-check"/></svg>Complimentary first meeting</li>
+        </ul>
+      </div>
+      <aside class="hero-card" aria-label="Illustrative portfolio growth">
+        <h2>The power of a long horizon</h2>
+        <svg viewBox="0 0 320 180" role="img" aria-label="Illustrative chart showing steady long-term growth">
+          <defs>
+            <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="#C9A227" stop-opacity=".45"/>
+              <stop offset="1" stop-color="#C9A227" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g stroke="rgba(255,255,255,.12)" stroke-width="1">
+            <path d="M0 150h320M0 110h320M0 70h320M0 30h320"/>
+          </g>
+          <path d="M0 150 C40 146 70 140 100 128 S160 102 200 80 S270 40 320 18 V180 H0Z" fill="url(#g)"/>
+          <path d="M0 150 C40 146 70 140 100 128 S160 102 200 80 S270 40 320 18" fill="none" stroke="#C9A227" stroke-width="3" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1">
+            <animate attributeName="stroke-dashoffset" from="1" to="0" dur="1.8s" fill="freeze"/>
+          </path>
+          <circle cx="320" cy="18" r="5" fill="#C9A227"/>
+        </svg>
+        <small>Illustration only. Not a forecast or a guarantee of future results.</small>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">What we do</span>
+        <h2>Comprehensive planning, tailored to your life</h2>
+        <p>From your first savings goal to passing on a legacy, we coordinate every part of your financial picture so the pieces work together.</p>
+      </div>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="icon"><svg><use href="#i-sunset"/></svg></div>
+          <h3>Retirement Planning</h3>
+          <p>Map out when you can retire and how to fund the life you want, with income strategies built to last decades.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg><use href="#i-chart"/></svg></div>
+          <h3>Investment Management</h3>
+          <p>Diversified, goal-based portfolios aligned with your time horizon and risk tolerance, reviewed regularly.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg><use href="#i-receipt"/></svg></div>
+          <h3>Tax Strategy</h3>
+          <p>Coordinate accounts, timing and giving so you keep more of what you earn, working alongside your tax professional.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg><use href="#i-shield"/></svg></div>
+          <h3>Risk &amp; Protection</h3>
+          <p>Review insurance and contingency planning so an unexpected event does not derail the plan you have built.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg><use href="#i-home"/></svg></div>
+          <h3>Estate &amp; Legacy</h3>
+          <p>Organize wealth transfer, beneficiaries and charitable intentions so your wishes are honoured with minimal friction.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg><use href="#i-users"/></svg></div>
+          <h3>Family &amp; Education</h3>
+          <p>Plan for education costs, multigenerational goals and life transitions like marriage, a new home or a career change.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Approach -->
+  <section class="section approach" id="approach">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Our approach</span>
+        <h2>A clear process, from first conversation to ongoing care</h2>
+      </div>
+      <ol class="steps">
+        <li class="reveal">
+          <h3>Discover</h3>
+          <p>We listen first: your goals, values, concerns and the full picture of your finances.</p>
+        </li>
+        <li class="reveal">
+          <h3>Design</h3>
+          <p>We build a written plan with clear priorities, trade-offs and measurable milestones.</p>
+        </li>
+        <li class="reveal">
+          <h3>Implement</h3>
+          <p>We put the plan into action, handling the details and coordinating with your other advisers.</p>
+        </li>
+        <li class="reveal">
+          <h3>Review</h3>
+          <p>Life changes, so your plan does too. We meet regularly and adjust as your circumstances evolve.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Planner / calculator -->
+  <section class="section" id="planner">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Growth planner</span>
+        <h2>See how consistent saving can grow over time</h2>
+        <p>Adjust the sliders to explore an illustrative projection. It is a simple tool to start the conversation, not personalised advice.</p>
+      </div>
+      <div class="calc-wrap reveal">
+        <form class="calc-form" id="calc" aria-label="Growth projection inputs" onsubmit="return false">
+          <div class="field">
+            <label for="start">Current savings <output id="o-start" for="start">$50,000</output></label>
+            <input type="range" id="start" min="0" max="1000000" step="5000" value="50000">
+          </div>
+          <div class="field">
+            <label for="monthly">Monthly contribution <output id="o-monthly" for="monthly">$1,000</output></label>
+            <input type="range" id="monthly" min="0" max="10000" step="100" value="1000">
+          </div>
+          <div class="field">
+            <label for="years">Time horizon <output id="o-years" for="years">20 years</output></label>
+            <input type="range" id="years" min="1" max="50" step="1" value="20">
+          </div>
+          <div class="field">
+            <label for="rate">Assumed annual return <output id="o-rate" for="rate">6.0%</output></label>
+            <input type="range" id="rate" min="0" max="12" step="0.5" value="6">
+          </div>
+          <p class="fine">Assumes monthly compounding, constant returns, and no fees, taxes or inflation adjustment. Actual returns vary and may be negative.</p>
+        </form>
+        <div class="calc-result" aria-live="polite">
+          <span class="label">Projected value</span>
+          <div class="big" id="r-total">$0</div>
+          <div class="bar" aria-hidden="true"><span class="b-principal" id="bar-p"></span><span class="b-growth" id="bar-g"></span></div>
+          <div class="breakdown">
+            <div><span>Total contributed</span><strong id="r-principal">$0</strong></div>
+            <div><span>Estimated growth</span><strong id="r-growth">$0</strong></div>
+          </div>
+          <a href="#contact" class="btn btn-gold">Discuss your plan</a>
+          <p class="fine" style="margin-top:1rem">Hypothetical illustration only.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section about" id="about">
+    <div class="container about-grid">
+      <div class="reveal">
+        <span class="eyebrow">About Horizon</span>
+        <h2>Advice built on trust, transparency and time</h2>
+        <p>We founded Horizon Wealth Planning on a simple belief: good financial advice should be clear, conflict-free and centred on you. As an independent firm, we are not tied to any product provider, so our recommendations answer to one thing only, your goals.</p>
+        <ul class="values">
+          <li><svg><use href="#i-check"/></svg><span><strong>Fiduciary duty.</strong> We are obligated to act in your best interest.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><strong>Transparent fees.</strong> You always know what you pay and why.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><strong>Plain language.</strong> No jargon, no pressure, just clear guidance.</span></li>
+        </ul>
+      </div>
+      <div class="stats reveal" aria-label="Firm highlights">
+        <div class="stat"><strong>1:1</strong><span>Dedicated planner for every client</span></div>
+        <div class="stat"><strong>100%</strong><span>Independent, no product commissions</span></div>
+        <div class="stat"><strong>4</strong><span>Step planning process</span></div>
+        <div class="stat"><strong>Free</strong><span>Introductory consultation</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Questions</span>
+        <h2>Frequently asked</h2>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary>What does it mean that Horizon is a fiduciary?</summary>
+          <p>A fiduciary is legally and ethically bound to put your interests ahead of their own. We do not earn commissions on products, which helps keep our advice free from conflicts.</p>
+        </details>
+        <details>
+          <summary>How are your fees structured?</summary>
+          <p>We use a transparent fee arrangement agreed in writing before any work begins. We will walk you through the details during your introductory consultation so there are no surprises.</p>
+        </details>
+        <details>
+          <summary>Do I need a large portfolio to work with you?</summary>
+          <p>Not necessarily. We work with people at many stages, including those just beginning to build wealth. Book a conversation and we will tell you honestly whether we are the right fit.</p>
+        </details>
+        <details>
+          <summary>What should I prepare for the first meeting?</summary>
+          <p>Just bring yourself and a sense of what matters to you. If you have recent statements or account summaries to hand, they help, but they are not required for the first conversation.</p>
+        </details>
+        <details>
+          <summary>How often will we meet?</summary>
+          <p>Most clients meet with us at least once or twice a year, with check-ins whenever life changes. You can reach us in between whenever questions come up.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-info reveal">
+        <span class="eyebrow">Get in touch</span>
+        <h2>Start with a conversation</h2>
+        <p>Tell us a little about your situation and we will arrange a complimentary, no-obligation introductory meeting, in person or by video.</p>
+        <ul>
+          <li><span class="icon"><svg><use href="#i-phone"/></svg></span><div><strong>+1 (555) 010-2040</strong><small>Mon to Fri, 9:00 to 17:30</small></div></li>
+          <li><span class="icon"><svg><use href="#i-mail"/></svg></span><div><strong>hello@horizonwealth.example</strong><small>We reply within one business day</small></div></li>
+          <li><span class="icon"><svg><use href="#i-pin"/></svg></span><div><strong>100 Harbour Street, Suite 2100</strong><small>Placeholder address</small></div></li>
+        </ul>
+      </div>
+
+      <form class="contact-form reveal" id="contact-form" novalidate>
+        <div class="row">
+          <div class="form-field">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+            <span class="error-msg">Please enter your name.</span>
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+            <span class="error-msg">Please enter a valid email address.</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-field">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel">
+            <span class="error-msg">Please enter a valid phone number.</span>
+          </div>
+          <div class="form-field">
+            <label for="topic">I'm interested in</label>
+            <select id="topic" name="topic" required>
+              <option value="">Select a topic</option>
+              <option>Retirement planning</option>
+              <option>Investment management</option>
+              <option>Tax strategy</option>
+              <option>Estate &amp; legacy</option>
+              <option>Something else</option>
+            </select>
+            <span class="error-msg">Please choose a topic.</span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="message">How can we help?</label>
+          <textarea id="message" name="message" required minlength="10"></textarea>
+          <span class="error-msg">Please share a few details (at least 10 characters).</span>
+        </div>
+        <button type="submit" class="btn btn-navy">Request my consultation</button>
+        <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="logo" style="margin-bottom:1rem">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="15" fill="none" stroke="#C9A227" stroke-width="1.5"/>
+            <path d="M5 20h22" stroke="#C9A227" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M9 20a7 7 0 0 1 14 0" fill="#C9A227"/>
+          </svg>
+          <span>Horizon <em>Wealth</em> Planning</span>
+        </a>
+        <p>Independent financial planning for people who want clarity, confidence and a plan that grows with them.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#approach">Our Approach</a></li>
+          <li><a href="#planner">Growth Planner</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Book a Consultation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li>+1 (555) 010-2040</li>
+          <li>hello@horizonwealth.example</li>
+          <li>100 Harbour Street, Suite 2100</li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <p>This website is for general information only and does not constitute personalised financial, tax or legal advice. Projections and illustrations are hypothetical, are not guarantees, and do not account for fees, taxes or inflation. Investing involves risk, including possible loss of principal. Past performance is not indicative of future results.</p>
+      <p>&copy; <span id="year">2026</span> Horizon Wealth Planning. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="to-top" aria-label="Back to top"><svg><use href="#i-up"/></svg></button>
+
+<script>
+(function () {
+  'use strict';
+  document.body.classList.remove('no-js');
+
+  /* ---------- Mobile navigation ---------- */
+  var toggle = document.querySelector('.nav-toggle');
+  var menu = document.getElementById('nav-menu');
+
+  function setMenu(open) {
+    menu.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  }
+  toggle.addEventListener('click', function () {
+    setMenu(toggle.getAttribute('aria-expanded') !== 'true');
+  });
+  menu.addEventListener('click', function (e) {
+    if (e.target.closest('a')) setMenu(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { setMenu(false); toggle.focus(); }
+  });
+  window.matchMedia('(min-width: 1024px)').addEventListener('change', function (e) {
+    if (e.matches) setMenu(false);
+  });
+
+  /* ---------- Active nav link on scroll ---------- */
+  var links = Array.prototype.slice.call(menu.querySelectorAll('a[href^="#"]:not(.btn)'));
+  var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+
+  function updateActive() {
+    var pos = window.scrollY + 120;
+    var current = null;
+    sections.forEach(function (s, i) { if (s && s.offsetTop <= pos) current = i; });
+    links.forEach(function (a, i) { a.classList.toggle('active', i === current); });
+  }
+
+  /* ---------- Back to top ---------- */
+  var toTop = document.getElementById('to-top');
+  toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      toTop.classList.toggle('show', window.scrollY > 600);
+      updateActive();
+      ticking = false;
+    });
+  }, { passive: true });
+  updateActive();
+
+  /* ---------- Reveal on scroll ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(function (el, i) {
+      el.style.transitionDelay = ((i % 3) * 80) + 'ms';
+      io.observe(el);
+    });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  /* ---------- Growth planner ---------- */
+  var fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+  var $ = function (id) { return document.getElementById(id); };
+  var inputs = { start: $('start'), monthly: $('monthly'), years: $('years'), rate: $('rate') };
+
+  function project() {
+    var P = +inputs.start.value;
+    var pmt = +inputs.monthly.value;
+    var yrs = +inputs.years.value;
+    var annual = +inputs.rate.value / 100;
+    var n = yrs * 12;
+    var r = annual / 12;
+    var growthFactor = Math.pow(1 + r, n);
+    var fv = r === 0
+      ? P + pmt * n
+      : P * growthFactor + pmt * ((growthFactor - 1) / r);
+    var contributed = P + pmt * n;
+    var gain = Math.max(fv - contributed, 0);
+
+    $('o-start').textContent = fmt.format(P);
+    $('o-monthly').textContent = fmt.format(pmt);
+    $('o-years').textContent = yrs + (yrs === 1 ? ' year' : ' years');
+    $('o-rate').textContent = annual * 100 === Math.round(annual * 100)
+      ? (annual * 100).toFixed(1) + '%' : (annual * 100).toFixed(1) + '%';
+
+    $('r-total').textContent = fmt.format(fv);
+    $('r-principal').textContent = fmt.format(contributed);
+    $('r-growth').textContent = fmt.format(gain);
+
+    var pct = fv > 0 ? (contributed / fv) * 100 : 100;
+    $('bar-p').style.width = Math.min(pct, 100) + '%';
+    $('bar-g').style.width = Math.max(100 - pct, 0) + '%';
+  }
+  Object.keys(inputs).forEach(function (k) { inputs[k].addEventListener('input', project); });
+  project();
+
+  /* ---------- Contact form ---------- */
+  var form = $('contact-form');
+  var status = $('form-status');
+
+  function validateField(field) {
+    var wrap = field.closest('.form-field');
+    var value = field.value.trim();
+    var ok = true;
+
+    if (field.required && !value) ok = false;
+    if (ok && field.type === 'email') ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+    if (ok && field.type === 'tel' && value) ok = /^[+()\-.\s\d]{7,20}$/.test(value);
+    if (ok && field.id === 'message') ok = value.length >= 10;
+
+    wrap.classList.toggle('invalid', !ok);
+    field.setAttribute('aria-invalid', String(!ok));
+    return ok;
+  }
+
+  var fields = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea'));
+  fields.forEach(function (f) {
+    f.addEventListener('blur', function () { validateField(f); });
+    f.addEventListener('input', function () {
+      if (f.closest('.form-field').classList.contains('invalid')) validateField(f);
+    });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.classList.remove('show');
+
+    var firstBad = null;
+    fields.forEach(function (f) {
+      if (!validateField(f) && !firstBad) firstBad = f;
+    });
+    if (firstBad) { firstBad.focus(); return; }
+
+    // No backend is wired up: replace this block with a fetch() to your form endpoint.
+    var name = $('name').value.trim().split(' ')[0];
+    status.textContent = 'Thank you, ' + name + '. Your request has been received and a planner will be in touch within one business day.';
+    status.classList.add('show');
+    form.reset();
+    fields.forEach(function (f) { f.removeAttribute('aria-invalid'); });
+  });
+
+  /* ---------- Footer year ---------- */
+  $('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
