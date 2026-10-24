@@ -48,7 +48,8 @@ Mobile-first with two `min-width` breakpoints only: `768px` (tablet) and `1024px
 
 ## JavaScript (single IIFE at end of body)
 
-- Nav toggle, active-link highlighting, back-to-top, scroll reveal
+- Nav toggle, active-link highlighting, back-to-top (bottom-left), scroll reveal
+- Chat widget (bottom-right piggy "Penny"): click opens a card and speaks the greeting with the browser's `speechSynthesis`; the card links to WhatsApp `https://wa.me/6512345678`. Readable source of the voice logic is in `.claude/hooks/chatbot-click-voice.js`, but the live copy is inlined in `index.html` (the CSP only allows the hashed inline script), so keep the two in sync.
 - Wealth-O-Meter: `FV = P(1+r)^n + PMT·((1+r)^n − 1)/r`, `r = annual/12`, `n = years × 12`; 0% handled separately
 - Quiz: one question at a time (topic, stage, name, email, optional phone, optional note), with allowlist validation, honeypots, minimum-fill-time check and a browser-level rate limit
 - `CONFIG.endpoint` is empty, so the quiz runs in **demo mode and sends nothing**. See `SECURITY.md` before wiring a real endpoint.
